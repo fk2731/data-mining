@@ -1,0 +1,152 @@
+---
+title: "Business Understanding Canvas"
+subtitle: "E0 · CRISP-DM — Detección de fraude en transacciones fintech"
+---
+
+::: {.callout-note}
+Este canvas está pensado para leerse de forma autónoma y caber en **una página**. Para la versión
+imprimible: `Ctrl+P` → guardar como PDF verificando que ocupe una sola hoja, o vaciar este contenido
+en la plantilla provista por el curso.
+:::
+
+```{=html}
+<style>
+.canvas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:1rem}
+.canvas-grid .cell{border:2px solid #2c6fbb;border-radius:8px;padding:12px 14px;font-size:.86rem;line-height:1.35}
+.canvas-grid .cell h3{margin:.1rem 0 .5rem;font-size:.95rem;color:#1b4a7e}
+.canvas-grid .cell.full{grid-column:1 / -1}
+.canvas-grid .cell ul{margin:.2rem 0 .2rem 1.1rem;padding:0}
+.canvas-grid .cell li{margin:.15rem 0}
+.canvas-grid .sub{font-weight:600;display:block;margin-top:.5rem}
+@media (max-width:700px){.canvas-grid{grid-template-columns:1fr}}
+</style>
+
+<div class="canvas-grid">
+
+  <div class="cell">
+    <h3>1 · Objetivo de negocio</h3>
+    <p>Que el área de prevención de fraude de una fintech de pagos digitales <b>reduzca sus pérdidas
+    por fraude</b> detectando transacciones que se apartan del <b>comportamiento habitual de cada
+    cuenta</b> —no de una regla genérica—, y decida con qué confianza actuar: bloquear
+    automáticamente, mandar a revisión humana, o dejar pasar.</p>
+    <ul>
+      <li><b>Dolor:</b> las reglas fijas actuales son iguales para todas las cuentas y no distinguen
+      "lo normal" de cada una; el fraude que más crece (ingeniería social, toma de cuenta) las imita.</li>
+      <li><b>Proceso impactado:</b> decisión de bloqueo/revisión en el momento de la transacción.</li>
+      <li><b>Horizonte:</b> decisión casi inmediata por transacción; reentrenamiento periódico del
+      perfil de cada cuenta (diario/semanal).</li>
+    </ul>
+  </div>
+
+  <div class="cell">
+    <h3>2 · Criterio de éxito (negocio)</h3>
+    <ul>
+      <li><b>≥ 70%</b> del monto fraudulento total cae en el nivel de <b>alta confianza</b> (se puede
+      bloquear automáticamente, sin revisión humana).</li>
+      <li>Tasa de falsos positivos en ese nivel de alta confianza <b>&lt; 0.5%</b> de las
+      transacciones legítimas.</li>
+      <li>El nivel de <b>confianza media</b> (enviado a revisión humana) no excede el <b>3%</b> del
+      volumen total de transacciones.</li>
+      <li>Ventana de medición: conjunto de prueba temporal equivalente a los últimos meses del historial disponible.</li>
+    </ul>
+  </div>
+
+  <div class="cell full">
+    <h3>3 · Evaluación de la situación</h3>
+    <span class="sub">Recursos</span>
+    <ul>
+      <li><b>PaySim</b> (Kaggle): ~6.3M transacciones simuladas de dinero móvil, con cuentas
+      identificadas y saldo antes/después — permite construir historial por cuenta.</li>
+      <li><b>IEEE-CIS Fraud Detection</b> (Kaggle/Vesta): 590,540 transacciones reales de e-commerce,
+      etiqueta de fraude confiable, para validar que las señales generalizan.</li>
+      <li>Reportes de industria (AppGate, Stripe, Condusef-Banxico) para sustentar el objetivo de
+      negocio y al stakeholder simulado.</li>
+      <li>Equipo: 4 estudiantes de Ciencia de la Computación; perfil técnico fuerte en modelado y
+      evaluación estadística.</li>
+      <li>Stakeholder: analista de prevención de fraude (perfil compuesto, simulado).</li>
+    </ul>
+    <span class="sub">Requisitos y restricciones</span>
+    <ul>
+      <li>Marco regulatorio mexicano (Ley Fintech, CNBV, reporte a la UIF): cualquier criterio de
+      bloqueo debe ser auditable.</li>
+      <li>Licencias de Kaggle: uso académico, no comercial.</li>
+      <li>Solo datos públicos; sin acceso a datos operativos reales de una fintech.</li>
+      <li>Cómputo limitado a equipos personales del equipo.</li>
+    </ul>
+    <span class="sub">Supuestos</span>
+    <ul>
+      <li>Las regularidades estadísticas de PaySim (aunque sintético) son suficientes para aprender
+      patrones de comportamiento transaccional por cuenta.</li>
+      <li>Las etiquetas de fraude de ambos datasets son confiables.</li>
+      <li>El comportamiento "normal" de una cuenta es razonablemente estable en ventanas cortas.</li>
+      <li>Un umbral de confianza por segmento es operativamente viable para automatizar decisiones.</li>
+    </ul>
+    <span class="sub">Riesgos (detalle en la página de riesgos)</span>
+    <ul>
+      <li>Desbalance extremo de clases (0.13%–3.5% de fraude): las métricas convencionales engañan.</li>
+      <li>Ninguno de los datasets es de una fintech LatAm real: los hallazgos son metodología
+      transferible, no diagnóstico real.</li>
+      <li>El fraude es adaptativo: el "comportamiento normal" que aprende el modelo puede quedar
+      obsoleto si el fraude evoluciona para imitarlo.</li>
+      <li>Calibrar la confianza es difícil con tan pocos positivos para validar la cola de alta
+      confianza.</li>
+    </ul>
+  </div>
+
+  <div class="cell">
+    <h3>4 · Objetivo de minería de datos</h3>
+    <ul>
+      <li><b>Tarea A — Modelado de comportamiento por cuenta:</b> construir un perfil histórico de
+      cada cuenta (PaySim) a partir de sus transacciones previas.</li>
+      <li><b>Tarea B — Detección de anomalías:</b> calcular un score de desviación de cada nueva
+      transacción respecto al perfil de su propia cuenta (isolation forest, LOF, autoencoder, o
+      distancia estadística tipo Mahalanobis).</li>
+      <li><b>Tarea C — Calibración de confianza:</b> convertir el score de anomalía en una
+      probabilidad interpretable (calibración isotónica/Platt), validada contra las etiquetas reales
+      de IEEE-CIS y, si el tiempo alcanza, con intervalos tipo conformal prediction.</li>
+      <li><b>Entregable técnico:</b> por transacción, un score de confianza de fraude en tres niveles
+      (alto/medio/bajo) con su justificación (variables que más contribuyeron a la anomalía).</li>
+    </ul>
+  </div>
+
+  <div class="cell">
+    <h3>5 · Éxito técnico</h3>
+    <ul>
+      <li><b>Detección:</b> recall ponderado por monto ≥ 0.70 en el nivel de alta confianza;
+      precisión ≥ 99.5% en ese mismo nivel.</li>
+      <li><b>Calibración:</b> error de calibración esperado (ECE) bajo un umbral definido en fase 3;
+      Brier score menor al de una línea base sin calibrar.</li>
+      <li><b>Comparación:</b> superar a la línea base de reglas fijas (umbral de monto/hora) tanto en
+      recall ponderado como en tasa de falsos positivos.</li>
+      <li>Validación temporal estricta (train antes de una fecha de corte, test después), sin fuga de
+      información entre cuentas.</li>
+    </ul>
+  </div>
+
+  <div class="cell full">
+    <h3>6 · Plan del proyecto</h3>
+    <ul>
+      <li><b>Fase 1 — Comprensión y exploración de datos:</b> descarga de PaySim e IEEE-CIS; EDA de
+      desbalance de clases, distribución de montos por cuenta, y estructura temporal disponible.</li>
+      <li><b>Fase 2 — Preparación:</b> construcción del historial por cuenta (PaySim), ingeniería de
+      variables de comportamiento (frecuencia, monto relativo al propio historial, contrapartes
+      habituales), y partición temporal train/test.</li>
+      <li><b>Fase 3 — Modelado y validación técnica:</b> línea base de reglas fijas; modelos de
+      anomalías por cuenta; calibración de confianza; validación cruzada con IEEE-CIS.</li>
+      <li><b>Fase 4 — Evaluación con el stakeholder y cierre:</b> revisión de resultados contra el
+      criterio de negocio, análisis de casos límite (cuentas nuevas sin historial), propuesta de
+      despliegue por niveles de confianza y presentación final.</li>
+    </ul>
+  </div>
+
+</div>
+```
+
+## Coherencia entre bloques
+
+| Bloque de negocio (1–2) | Bloque técnico (4–5) |
+|---|---|
+| "Detectar desviaciones del comportamiento habitual de cada cuenta" | Tarea A+B (perfil por cuenta + score de anomalía) |
+| "Decidir con qué confianza actuar" | Tarea C (calibración) con ECE bajo umbral |
+| "≥70% del monto fraudulento en alta confianza" | Recall ponderado por monto ≥ 0.70 en ese nivel |
+| "Falsos positivos &lt;0.5% en alta confianza" | Precisión ≥ 99.5% en el nivel de alta confianza |
