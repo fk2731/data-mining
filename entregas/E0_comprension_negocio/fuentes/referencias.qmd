@@ -1,0 +1,127 @@
+---
+title: "Fuentes citadas"
+subtitle: "E0 · Comprensión del Negocio — sustento del stakeholder simulado"
+---
+
+::: {.callout-important}
+El stakeholder de E0 es **simulado y de perfil compuesto** (no representa a una empresa real). Cada
+respuesta de la [bitácora](../bitacora.qmd) se apoya en una de las fuentes de esta lista mediante la
+marca `[n]`, **numeradas en el orden en que aparecen en este documento** (no en el orden en que se
+citan en la bitácora, ni heredadas de una versión anterior sobre otro tema). Todas se verificaron
+mediante búsqueda web el **11 de septiembre de 2026**; se recomienda volver a abrir cada enlace antes
+de la entrega final.
+:::
+
+## Datos de modelado
+
+**[1] PaySim — Lopez-Rojas, E. A.; Elmir, A.; Axelsson, S. "PaySim: A financial mobile money
+simulator for fraud detection." The 28th European Modeling and Simulation Symposium (EMSS 2016),
+Larnaca, Chipre.**
+Simulador basado en agentes que reproduce, de forma sintética, un mes de transacciones (744 pasos) de
+un servicio real de dinero móvil de un país africano: ~6.3 millones de transacciones, con cuentas
+identificadas (`nameOrig`, `nameDest`) y saldo antes/después de cada operación — es lo que permite
+construir el historial de comportamiento por cuenta que exige la pregunta central del proyecto
+(P1 de [preguntas.qmd](../preguntas.qmd)); el fraude representa el 0.13% de los casos (8,213
+transacciones). —
+<https://www.msc-les.org/proceedings/emss/2016/EMSS2016_249.pdf> ·
+<https://github.com/EdgarLopezPhD/PaySim> (repositorio; dataset alojado en Kaggle). Consultado el
+11/09/2026. — *Respalda:* P5, P11, P12 de la bitácora.
+
+**[2] IEEE-CIS Fraud Detection — competencia de Kaggle, datos provistos por Vesta Corporation.**
+590,540 transacciones reales de comercio electrónico ("card-not-present") de Estados Unidos, a lo
+largo de 6 meses, con 393 variables (monto, tipo de producto, variables de tarjeta/dirección
+anonimizadas, conteos C1–C14, deltas de tiempo D1–D15, variables de identidad/dispositivo, y
+variables de ingeniería propia de Vesta). Tasa de fraude real: 3.5% (20,663 casos). —
+<https://www.kaggle.com/c/ieee-fraud-detection/data>. Consultado el 11/09/2026. — *Respalda:* P12 de
+la bitácora (uso como validación con etiquetas reales).
+
+## Contexto de negocio: fraude digital en fintech y LatAm
+
+**[3] AppGate — informe "Fraud Beat 2026" sobre fraude digital en Latinoamérica; Revista E&N —
+"Fraude digital en la banca móvil registró crecimiento del 155% durante 2025".**
+El costo de cada transacción fraudulenta en instituciones financieras de LatAm equivale a **4.59
+veces** el valor de lo perdido (frente a 3.07 veces en el sector minorista); el **38%** del fraude
+reciente se atribuye a métodos de pago nuevos y emergentes (pagos móviles, cripto); crecimiento
+interanual de fraude por ingeniería social del 155% en la banca digital de la región durante
+2025–2026. —
+<https://lanotaeconomica.com.co/movidas-empresarial/el-informe-fraud-beat-2026-de-appgate-revela-la-industrializacion-del-fraude-digital-en-latinoamerica/> ·
+<https://www.revistaeyn.com/finanzas/fraude-digital-en-la-banca-movil-registro-crecimiento-del-155-durante-2025-KB31303018>.
+Consultado el 11/09/2026. — *Respalda:* P2, P6, P7 de la bitácora.
+
+**[4] Reportes sobre fraude por ingeniería social y herramientas de acceso remoto (RAT) en LatAm.**
+Los intentos de fraude mediante herramientas de acceso remoto crecieron 409% en 2025–2026 en la
+región; en algunos estudios, las redes sociales son la puerta de entrada del 86% de los fraudes
+digitales identificados. —
+<https://www.cronista.com/mexico/finanzas-economia/las-redes-sociales-ya-son-la-puerta-de-entrada-para-el-86-de-los-fraudes-digitales-en-america-latina/> ·
+<https://www.innovaciondigital360.com/pago-electronico/el-fraude-financiero-digital-acecha-con-fuerza-en-2025-y-estas-son-las-principales-tendencias-en-latam/>.
+Consultado el 11/09/2026. — *Respalda:* P2 de la bitácora (tipos de fraude que más preocupan).
+
+## Contexto de comercio electrónico y contracargos en México
+
+**[5] CONDUSEF — "La CONDUSEF informa sobre las compras en comercio electrónico, realizadas en el
+período enero-septiembre de 2022." Comunicado oficial, gob.mx, 23 de enero de 2023.**
+Fuente primaria (no una nota de prensa que la resume): de enero a septiembre de 2022 se registraron
+**610 millones de operaciones de comercio electrónico** por 431,500 millones de pesos, de 960
+millones de solicitudes de compra recibidas (tasa de autorización: 63.6%); de esas operaciones
+autorizadas, solo el **0.50% derivó en un contracargo o reclamación**. En el mismo periodo, la
+CONDUSEF registró **72,193 casos de fraude**, equivalentes al 49% de las reclamaciones bancarias
+totales — es decir, el fraude en medios de pago es, por volumen de quejas, el problema número uno que
+enfrenta la banca mexicana con sus usuarios. —
+<https://www.gob.mx/condusef/prensa/la-condusef-informa-sobre-las-compras-en-comercio-electronico-realizadas-en-el-periodo-enero-septiembre-de-2022>.
+Consultado el 11/09/2026. — *Respalda:* P6 de la bitácora (magnitud del fraude en México y su peso
+relativo frente a otras quejas bancarias).
+
+## Marco regulatorio
+
+**[6] Ley para Regular las Instituciones de Tecnología Financiera ("Ley Fintech"), Diario Oficial de
+la Federación, 9 de marzo de 2018 (vigente desde el 10 de marzo de 2018; última reforma: 24 de enero
+de 2024).**
+Regula a las Instituciones de Tecnología Financiera bajo supervisión de la Secretaría de Hacienda y
+Crédito Público, el Banco de México y la CNBV; exige controles para prevenir y reducir el riesgo de
+fraude y lavado de dinero, y el reporte de operaciones inusuales a la Unidad de Inteligencia
+Financiera (UIF). —
+<https://www.cnbv.gob.mx/Normatividad/Ley%20para%20Regular%20las%20Instituciones%20de%20Tecnolog%C3%ADa%20Financiera.pdf>.
+Consultado el 11/09/2026. — *Respalda:* P8 de la bitácora.
+
+## Glosario de términos del área (para un equipo sin experiencia previa en fintech)
+
+**[7] Signifyd — "Glosario Antifraude" (México); ClearSale — "Glosario de términos: comercio
+electrónico y prevención del fraude".**
+Ambas son empresas reales de prevención de fraude que operan en Latinoamérica (ClearSale es de
+origen brasileño, con operación en México); sus glosarios públicos definen, en el lenguaje de la
+industria, términos como falso positivo, falso negativo, chargeback (contracargo) y score de riesgo,
+usados en la respuesta a P13 de la bitácora. —
+<https://mx.signifyd.com/blog/glosario-antifraude-mx/> ·
+<https://es.clear.sale/recursos/glosario-de-terminos-del-fraude>. Consultado el 11/09/2026. —
+*Respalda:* P13 de la bitácora (vocabulario básico del área: falso positivo, falso negativo, recall,
+precisión, chargeback, score de riesgo).
+
+## Otras fuentes de apoyo
+
+**[8] Payment Media — "¿Cómo funciona un motor de reglas en el proceso de compra on-line?" (2 de
+septiembre de 2019); Konduto — "¿Qué es la revisión manual?" (centro de ayuda).**
+Dos piezas complementarias de la misma práctica de industria. Payment Media describe un motor de
+reglas de autenticación basada en riesgo (RBA): clasifica cada transacción en **rangos de riesgo** —
+bajo (autenticación automática, sin fricción) o medio/alto (exige segundo factor: biometría, SMS,
+notificación push) — optimizado por analistas de operaciones. Konduto (empresa de prevención de
+fraude con operación en LatAm) define **revisión manual** de forma explícita: *"un proceso en el que
+los agentes humanos verifican, una a una, las transacciones que han sido consideradas sospechosas por
+[el] antifraude"*, donde el analista puede contactar al cliente o investigar por otras fuentes antes
+de aprobar o rechazar; cada decisión retroalimenta el modelo. Juntas, respaldan la existencia real de
+los dos extremos que describe el stakeholder: reglas con escalamiento automático, y revisión humana
+caso por caso para lo ambiguo. —
+<https://www.paymentmedia.com/news-4497-cmo-funciona-un-motor-de-reglas-en-el-proceso-de-compra-on-line.html> ·
+<https://ayuda.konduto.com/article/607-que-es-la-revision-manual>. Consultado el 11/09/2026. —
+*Respalda:* P1, P3, P4, P9, P10, P11 de la bitácora.
+
+## Pendientes reales para el equipo
+
+- Verificar que los enlaces de Kaggle ([1], [2]) sigan activos y que las condiciones de licencia (uso
+  académico) se respeten en el reporte final.
+- Todas las fechas de "consultado el" son de hoy (11/09/2026); actualizarlas si se vuelve a consultar
+  después.
+
+## Formato usado en esta versión
+
+> **[n]** Autor/Institución. *Título.* Año/fecha. URL. Consultado el DD/MM/AAAA. — *Respalda:*
+> [pregunta(s) de la bitácora que sustenta].
