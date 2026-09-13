@@ -4,6 +4,7 @@ project:
 
 website:
   title: "Proyecto Integrador · Minería de Datos"
+  favicon: favicon.svg
   description: >-
     Detección de fraude y estimación de confianza en transacciones fintech.
   reader-mode: true
