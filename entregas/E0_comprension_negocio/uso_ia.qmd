@@ -1,0 +1,94 @@
+---
+title: "Documentación de uso de herramientas de IA"
+subtitle: "E0 · Comprensión del Negocio"
+---
+
+El equipo utilizó una herramienta de IA generativa (**Claude**, modelo **Claude Sonnet 5**, vía
+**Claude Code**) en dos interacciones, ambas dirigidas explícitamente por el equipo. En ambas se le
+dieron a la IA el rol, el formato y los límites exactos de la respuesta —no se le pidió que decidiera
+por nosotros— y cada salida se revisó antes de incorporarla.
+
+::: {.callout-note}
+Esta página documenta las interacciones que el equipo condujo de forma dirigida: la generación de
+candidatas para las preguntas de investigación, y la entrevista simulada. **Antes de entregar:** si
+además se usó IA para cualquier otra cosa (redactar u organizar otras secciones, armar la estructura
+del sitio, etc.), agréguenlo aquí también. Omitir un uso real es justo lo que penaliza la rúbrica
+("uso de IA no documentado"); declarar un uso acotado y bien dirigido, como el de esta página, no se
+penaliza.
+:::
+
+## Uso 1 — Generación de candidatas para las preguntas de investigación
+
+| Campo | Detalle |
+|---|---|
+| Herramienta | Claude Sonnet 5 (Claude Code) |
+| Fecha | 11 de septiembre de 2026 |
+| Tarea | Proponer candidatas a preguntas de investigación para el tema de fraude fintech, alineadas con las tareas de minería que el equipo ya había esbozado (detección de anomalías por cuenta, clasificación supervisada, análisis costo-sensible). |
+| Rol de la IA | Generador de opciones únicamente. No decidió cuál sería la pregunta central del proyecto. |
+| Rol del equipo | Definió que la pregunta sobre anomalías por cuenta e incertidumbre ("cómo saber si es fraude y con qué seguridad lo decimos") sería la **pregunta central (P1)**, por encima de lo que la IA había propuesto como una candidata más entre varias. |
+
+**Prompt empleado**
+
+> Genera 4 a 6 candidatas a preguntas de investigación para un proyecto de detección de fraude en
+> transacciones fintech, usando los datasets PaySim e IEEE-CIS. Cada una debe ligarse explícitamente
+> a una tarea de minería de datos (clasificación, detección de anomalías, o análisis de costos).
+> Formato: lista numerada, con una línea de justificación técnica por candidata. No las priorices ni
+> elijas la mejor — esa decisión es nuestra.
+
+**Qué se hizo con la salida:** el equipo tomó las candidatas, identificó que ninguna capturaba bien
+la idea de "comparar contra el historial propio de cada cuenta con un nivel de confianza" —que surgió
+de la reflexión del equipo, no de la IA— y la redactó como pregunta nueva, colocándola como P1 por
+encima de las generadas. Las demás candidatas se adaptaron y reordenaron como P2–P4 (ver
+[preguntas.qmd](preguntas.qmd)).
+
+## Uso 2 — IA como stakeholder simulado en el ejercicio de rol
+
+| Campo | Detalle |
+|---|---|
+| Herramienta | Claude Sonnet 5 (Claude Code) |
+| Fecha | 11 de septiembre de 2026 |
+| Tarea | Representar, en un ejercicio de rol, a un analista de prevención de fraude en una fintech de pagos digitales (perfil compuesto, no una empresa real), para la entrevista simulada que exige la entrega (ver [bitácora](bitacora.qmd)). |
+| Rol de la IA | Actuar el personaje y responder pregunta por pregunta, citando fuente o declarando explícitamente la falta de evidencia. |
+| Rol del equipo | Escribió el guion completo de 12 preguntas antes de la entrevista, las presentó una por una, aportó y validó las fuentes permitidas (reportes de fraude en LatAm y marco regulatorio mexicano), y descartó o reformuló toda respuesta sin sustento claro. |
+
+**Prompt de apertura**
+
+> Vas a actuar como el stakeholder simulado de nuestra entrevista de Comprensión del Negocio: un
+> analista de prevención de fraude en una fintech de pagos digitales que opera en México. Es un
+> perfil compuesto, no representa a ninguna empresa real. Voy a hacerte, una por una, las preguntas
+> de nuestro guion. Para cada respuesta:
+> 1. Responde en primera persona, en 3 a 5 líneas, con el conocimiento y las restricciones reales de
+>    ese puesto.
+> 2. Fundamenta cada afirmación ÚNICAMENTE en fuentes públicas verificables (reportes de industria,
+>    marco regulatorio) que yo te vaya pasando o que ya estén en nuestra lista de referencias. Si no
+>    hay fuente, dilo explícitamente ("no tengo evidencia pública para esto") en vez de inventarlo.
+> 3. No adelantes preguntas que no te he hecho ni completes el guion por tu cuenta.
+>
+> Primera pregunta: [pregunta 1 del guion]
+
+**Prompt repetido por cada pregunta del guion**
+
+> Siguiente pregunta del guion: "[texto exacto de la pregunta]". Recuerda: solo con fuente
+> verificable citada, o "no tengo evidencia pública para esto".
+
+**Qué se hizo con la salida:** por cada una de las 12 preguntas, el equipo contrastó la respuesta
+contra la fuente citada (lista en [fuentes/referencias.qmd](fuentes/referencias.qmd)) antes de
+aceptarla; las respuestas sin sustento verificable se reformularon; y la sección de **reflexión del
+equipo**, al final de la bitácora, se escribió sin apoyo de IA.
+
+## Registro de revisión del equipo
+
+| Interacción | Quién validó / decidió | Cambios respecto a la salida de la IA | Fecha |
+|---|---|---|---|
+| Uso 1 — preguntas | Kristian | Se descartaron las candidatas que no capturaban la idea de comparar cada transacción contra el historial de su propia cuenta; esa idea se redactó como P1 (pregunta central, no propuesta por la IA) y las demás candidatas se reordenaron como P2–P4. | 11 de septiembre de 2026 |
+| Uso 2 — stakeholder | Kristian | Se contrastó cada respuesta contra su fuente citada antes de aceptarla; las respuestas sin fuente verificable se reformularon (ver correcciones documentadas en [fuentes/referencias.qmd](fuentes/referencias.qmd)); la reflexión final de la bitácora se escribió sin apoyo de IA. | 11 de septiembre de 2026 |
+
+> **Nota:** por ahora esta revisión la hizo únicamente Kristian. Falta que el resto del equipo la
+> confirme (o la corrija) antes de la verificación oral — cualquier integrante puede ser preguntado
+> sobre esta página.
+
+## Si no hubo más usos de IA
+
+Si estas fueron las únicas interacciones con IA en esta entrega, indíquenlo aquí de forma explícita,
+por ejemplo: *"Fuera de las interacciones documentadas arriba, no se utilizaron herramientas de IA en
+esta entrega."* — y bórrese este párrafo de instrucción antes de entregar.
