@@ -1,0 +1,46 @@
+# Proyecto Integrador — Almacenes y Minería de Datos
+
+## Tema
+
+**Detección de fraude y estimación de confianza en transacciones fintech.**
+
+Detectar cuándo una transacción se aparta del comportamiento habitual de **esa cuenta en particular**
+—más allá de reglas fijas iguales para todos— y decirlo con un nivel de **confianza** explícito, para
+poder bloquear automáticamente lo que es casi seguro fraude, mandar a revisión humana lo dudoso, y no
+friccionar al resto. Pregunta guía: *¿cómo sabemos si una transacción es fraude, y con qué seguridad
+lo decimos?*
+
+El proyecto se construye de forma incremental siguiendo **CRISP-DM**. Esta primera parte cubre la fase
+de **Comprensión del Negocio (E0)**.
+
+## Estructura del repositorio
+
+```
+.
+├── _quarto.yml                       # configuración del sitio (output-dir: docs)
+├── index.qmd                         # portada
+├── docs/                             # sitio compilado que sirve GitHub Pages
+├── entregas/
+│   └── E0_comprension_negocio/
+│       ├── index.qmd                 # resumen de la entrega E0
+│       ├── bitacora.qmd              # bitácora de la reunión con el stakeholder
+│       ├── canvas.qmd                # Business Understanding Canvas (1 página)
+│       ├── preguntas.qmd             # preguntas de investigación priorizadas
+│       ├── criterio_exito.qmd        # criterio de éxito en términos de negocio
+│       ├── riesgos_supuestos.qmd     # supuestos y riesgos
+│       ├── uso_ia.qmd                # documentación de uso de LLMs
+│       └── fuentes/
+│           └── referencias.qmd       # fuentes verificables (stakeholder simulado)
+└── entrega_0/                        # material de referencia del curso (instrucciones y plantillas)
+```
+
+## Integrantes
+
+| Nombre | Número de cuenta |
+|---|---|
+| Vega Navas Saúl | [pendiente] |
+| Cimmino Yáñez Nicholas Joseph | [pendiente] |
+| Benítez Pérez Kristian Leonel | 322011346 |
+| Herrera Cuamatla Jennifer Jade | [pendiente] |
+
+> Todos los integrantes deben poder explicar cualquier parte de la entrega (verificación oral en clase).
