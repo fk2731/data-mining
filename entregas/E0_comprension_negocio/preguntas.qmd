@@ -1,0 +1,75 @@
+---
+title: "Preguntas de investigación priorizadas"
+subtitle: "E0 · Comprensión del Negocio"
+---
+
+Cuatro preguntas, ordenadas por prioridad. La primera es la que el equipo decidió como **eje central
+del proyecto**: no basta con clasificar fraude/no-fraude, hay que saber **con qué seguridad** se
+afirma.
+
+> Las candidatas iniciales para estas preguntas se generaron con apoyo de IA a partir de las tareas
+> de minería ya definidas por el equipo (prompt dirigido registrado en
+> [Uso de IA — Uso 1](uso_ia.qmd)). La selección, la redacción final y el orden de prioridad —en
+> particular, decidir que la pregunta sobre anomalías por cuenta fuera la P1— son decisión del equipo.
+
+## P1 — (Prioridad máxima) ¿Qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza podemos afirmar que son fraude?
+
+- **En una frase:** cómo saber si es fraude o no, y con qué seguridad lo decimos.
+- **Por qué es el eje:** la entrevista con el stakeholder mostró que el dolor no es la falta de un
+  clasificador, sino que **las reglas actuales tratan igual a todas las cuentas**. El valor de negocio
+  (automatizar el bloqueo sin sumar fricción) depende de tener un **score de confianza**, no solo una
+  etiqueta.
+- **Tarea de minería:** modelado del comportamiento histórico por cuenta (PaySim) + detección de
+  anomalías (isolation forest / local outlier factor / autoencoder) + **calibración de la
+  probabilidad** de ese score (isotonic regression / Platt scaling; explorar conformal prediction
+  para dar un intervalo de confianza en vez de un solo número).
+- **Variables candidatas:** desviación del monto respecto al historial propio de la cuenta,
+  frecuencia relativa de transacciones, novedad de la contraparte (`nameDest`), cambio de saldo
+  relativo (`oldbalanceOrg` vs `newbalanceOrig` en PaySim), tiempo desde la última transacción.
+- **Éxito de la pregunta:** en el nivel de alta confianza, recall ponderado por monto ≥ 0.70 y
+  precisión ≥ 99.5%; error de calibración esperado (ECE) por debajo del umbral que se fije en fase 3.
+
+## P2 — (Prioridad alta) ¿Qué combinación de variables permite separar fraude de comportamiento legítimo con etiquetas reales, y sirve esto para validar el criterio de anomalía de P1?
+
+- **Por qué segundo:** IEEE-CIS tiene etiquetas de fraude reales (no simuladas); sirve para comprobar
+  si las señales de anomalía que encontremos en PaySim generalizan a datos reales, aunque de otro
+  contexto (e-commerce de EE. UU., no fintech LatAm).
+- **Tarea de minería:** clasificación supervisada con manejo de desbalance (pesos de clase,
+  submuestreo/sobremuestreo), evaluada con PR-AUC y recall, no con exactitud.
+- **Variables candidatas:** monto de transacción, variables C1–C14 (conteos), D1–D15 (deltas de
+  tiempo desde transacciones previas), variables de dispositivo y coincidencia de dirección.
+- **Éxito de la pregunta:** PR-AUC del modelo supervisado por encima de una línea base ingenua
+  (predecir siempre "no fraude"), y coherencia direccional con las variables que resultan importantes
+  en el modelo de anomalías de P1.
+
+## P3 — (Prioridad media) ¿Dónde conviene fijar los umbrales de confianza (alto/medio/bajo) para minimizar el costo esperado del negocio?
+
+- **Por qué tercero:** depende de tener ya un score calibrado (P1); es la traducción de ese score a
+  una **política de decisión** operativa.
+- **Tarea de minería:** análisis de costo-sensibilidad sobre la curva precisión-recall, usando el
+  costo asimétrico reportado por el stakeholder (un fraude no detectado cuesta ~4.59× el monto
+  perdido frente al costo de un falso positivo).
+- **Variables candidatas:** el score calibrado de P1, el monto de la transacción (para ponderar el
+  costo real, no solo el conteo de casos).
+- **Éxito de la pregunta:** una política de tres umbrales que cumpla el criterio de éxito de negocio
+  (≥70% del monto en alta confianza, revisión humana ≤3% del volumen).
+
+## P4 — (Prioridad media) ¿Qué tan estable es el perfil de comportamiento "normal" de una cuenta a lo largo del tiempo, y cómo se degrada el modelo cuando ese comportamiento cambia legítimamente o el fraude lo imita?
+
+- **Por qué cuarto:** es la pregunta de sostenibilidad del modelo en el tiempo; no bloquea el resto
+  del proyecto pero es central para que el resultado sea creíble como propuesta operativa.
+- **Tarea de minería:** validación temporal (ventanas móviles), comparación del desempeño del modelo
+  en distintos cortes de tiempo, detección de *concept drift*.
+- **Variables candidatas:** desempeño (recall/precisión en alta confianza) por ventana temporal,
+  tasa de cuentas "nuevas" sin historial suficiente.
+- **Éxito de la pregunta:** cuantificar cada cuánto tiempo sería necesario reentrenar o actualizar el
+  perfil de cada cuenta para mantener el desempeño dentro del criterio de éxito.
+
+## Trazabilidad
+
+| Pregunta | Tarea de minería | Bloque del Canvas | Contribución al objetivo de negocio |
+|---|---|---|---|
+| P1 | Anomalías por cuenta + calibración de confianza | 4-A/B/C · 5 | Score de confianza para decidir bloqueo/revisión/paso |
+| P2 | Clasificación supervisada (validación cruzada) | 4-C (validación) · 5 | Confirmar que las señales de anomalía generalizan |
+| P3 | Análisis costo-sensible | 2 · 5 | Política operativa de tres niveles |
+| P4 | Validación temporal / concept drift | 3 (riesgos) · 6 | Sostenibilidad del modelo en producción |
