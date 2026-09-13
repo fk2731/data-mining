@@ -1,0 +1,192 @@
+---
+title: "Bitácora de la reunión con el stakeholder"
+subtitle: "E0 · Comprensión del Negocio"
+date: 2026-09-11
+---
+
+## 1. Datos de la reunión
+
+| Campo | Detalle |
+|---|---|
+| Fecha | 11 de septiembre de 2026 |
+| Duración | ~50 minutos |
+| Modalidad | **Ejercicio de rol conducido con IA (stakeholder simulado)** |
+| Rol representado | Analista de **Prevención de Fraude** en una fintech de pagos digitales que opera en México (**perfil compuesto**, no representa a una empresa real) |
+| Participantes del equipo | Vega Navas Saúl, Cimmino Yáñez Nicholas Joseph, Benítez Pérez Kristian Leonel, Herrera Cuamatla Jennifer Jade |
+
+### Por qué el stakeholder es simulado, y por qué es un perfil compuesto
+
+El equipo no tiene acceso directo a personal de riesgo/fraude de una fintech dentro de la ventana de
+la entrega. Además, por la naturaleza del problema, **ninguna empresa real publica sus patrones
+internos de fraude** (sería revelar cómo evadir sus controles). Por eso el ejercicio de rol no
+representa a una compañía específica: es un **perfil compuesto**, construido con **Claude Sonnet 5**
+siguiendo un guion fijo, y sus respuestas se fundamentan **únicamente** en fuentes públicas
+verificables —reportes de la industria del fraude en LatAm y el marco regulatorio mexicano—, citadas
+con la notación `[n]` y listadas en [Fuentes citadas](fuentes/referencias.qmd). El prompt exacto que
+dirigió este ejercicio está registrado en [Uso de IA — Uso 2](uso_ia.qmd). No se incluyen
+afirmaciones sin sustento documental.
+
+::: {.callout-warning}
+## Pendiente del equipo antes de entregar
+Verificar cada cita `[n]` contra la fuente original, y asegurarse de que **todos** los integrantes
+del equipo conozcan a fondo el contenido de esta entrega antes de la verificación oral: cualquiera
+puede ser preguntado y una respuesta insuficiente anula la entrega de todo el equipo.
+:::
+
+## 2. Guion de preguntas y respuestas
+
+### P1. ¿Cómo deciden hoy si una transacción es fraudulenta o no?
+
+Hoy se combina un **motor de reglas fijas** (monto por encima de un umbral, hora inusual, cambio de
+dispositivo o geolocalización, velocidad de operaciones) con revisión manual de los casos marcados.
+Las reglas son las mismas para todas las cuentas: no distinguen entre una cuenta que habitualmente
+mueve montos altos y una que no. `[8]`
+
+### P2. ¿Qué patrones de fraude les preocupan más actualmente?
+
+El fraude vía **ingeniería social** y **toma de cuenta** (account takeover) crecen con fuerza en la
+región: la banca digital en LatAm registró un crecimiento de fraude por ingeniería social del 155%
+en 2025–2026, y los intentos con herramientas de acceso remoto (RAT) crecieron 409% en el mismo
+periodo. Este tipo de fraude es particularmente difícil de detectar con reglas fijas porque **imita
+el comportamiento legítimo del dueño real de la cuenta**. `[3][4]`
+
+### P3. ¿Qué ocurre cuando el sistema marca una transacción como sospechosa?
+
+Depende de la certeza: si la regla es muy clara (p. ej. monto extremo desde un dispositivo nunca
+antes visto), se bloquea automáticamente; si es ambigua, se manda a un analista humano, lo que toma
+tiempo y a veces frustra al cliente legítimo cuya operación se retrasa. No existe hoy un tercer nivel
+intermedio basado en un score de confianza continuo. `[8]`
+
+### P4. ¿Qué decisiones se toman hoy sin apoyo de datos que les gustaría fundamentar mejor?
+
+Tres, principalmente: (a) **cuándo bloquear automáticamente vs. mandar a revisión humana**, hoy
+basado en reglas binarias, no en un nivel de confianza; (b) **cuánto tiempo puede tardar una revisión
+manual** sin perder al cliente; y (c) **cómo ajustar el umbral de sensibilidad** cuando cambia el tipo
+de fraude dominante. `[8]`
+
+### P5. ¿Qué datos de comportamiento transaccional tienen disponibles por cuenta?
+
+Historial de transacciones por cuenta (montos, frecuencia, contrapartes habituales, dispositivo,
+geolocalización aproximada) durante los últimos meses. La dificultad es que ese historial es
+**distinto para cada cuenta**: lo "normal" para una no lo es para otra, por lo que un modelo genérico
+entrenado con datos de todas las cuentas mezcladas pierde esa referencia individual. `[1][8]`
+
+### P6. ¿Cómo afecta un fraude no detectado o un falso positivo al negocio?
+
+El costo es asimétrico: en instituciones financieras de LatAm, **cada transacción fraudulenta cuesta
+en promedio 4.59 veces el valor de lo perdido** (por investigación, reembolso, atención al cliente y
+reputación), frente a 3.07 veces en el sector minorista. Un falso positivo, en cambio, cuesta menos
+en dinero directo pero deteriora la confianza del cliente legítimo y puede llevarlo a irse con la
+competencia. En México, la magnitud no es menor: solo entre enero y septiembre de 2022, la CONDUSEF
+registró **72,193 casos de fraude en medios de pago, el 49% de todas las reclamaciones bancarias**
+recibidas en ese periodo — el fraude no es un problema marginal, es la principal fuente de quejas de
+los usuarios contra sus bancos. `[3][5]`
+
+### P7. ¿Qué papel juega la regla fija frente a un modelo de comportamiento por cuenta?
+
+Las reglas fijas son fáciles de auditar y explicar, pero **no se adaptan** a que cada cuenta tiene su
+propio patrón normal, y son fáciles de evadir una vez que se conocen los umbrales. El 38% del fraude
+reciente en la región se atribuye a métodos de pago nuevos y emergentes (pagos móviles, cripto), que
+las reglas fijas heredadas no cubren bien. `[3]`
+
+### P8. ¿Qué restricciones regulatorias tienen?
+
+En México, la **Ley para Regular las Instituciones de Tecnología Financiera** ("Ley Fintech",
+vigente desde marzo de 2018, con reforma en enero de 2024) obliga a las instituciones a prevenir y
+reducir el riesgo de fraude y lavado de dinero, y a reportar actividades inusuales a la Unidad de
+Inteligencia Financiera (UIF), bajo supervisión de la CNBV y el Banco de México. Cualquier modelo que
+bloquee o marque cuentas debe ser auditable frente a este marco. `[6]`
+
+### P9. ¿Qué significaría "éxito" para ustedes en un proyecto así?
+
+Que el sistema entregue, por transacción, no solo una etiqueta sino un **nivel de confianza**: alto
+(bloquear automáticamente), medio (revisión humana) o bajo (dejar pasar). Que la mayoría del monto
+fraudulento caiga en el nivel alto —para automatizar su bloqueo sin depender de analistas—, y que el
+nivel medio no crezca tanto que sature al equipo de revisión. `[8]`
+
+### P10. ¿Cada cuándo se actuaría con esta información?
+
+En el momento de la transacción (decisión casi inmediata para bloquear o dejar pasar) y, en paralelo,
+una revisión periódica (diaria o semanal) para reentrenar el perfil de comportamiento de cada cuenta,
+porque el comportamiento legítimo también cambia con el tiempo. `[8]`
+
+### P11. ¿Qué reticencias tendrían para adoptar un modelo de anomalías con score de confianza?
+
+Que el score no sea interpretable para un analista humano ni auditable frente al regulador; que el
+modelo tarde en "aprender" el comportamiento de cuentas nuevas (sin historial); y que la calibración
+de la confianza sea poco confiable precisamente donde más importa: en los pocos casos de fraude real
+(menos del 1% de las transacciones en datasets de referencia). `[8][1]`
+
+### P12. ¿Hay antecedentes de estudios o soluciones similares?
+
+Sí: el uso de detección de anomalías y modelos de comportamiento por entidad es una línea activa en
+la literatura de detección de fraude (p. ej. el trabajo original de PaySim sobre simulación de dinero
+móvil, y el reto IEEE-CIS de Vesta Corporation sobre fraude real en e-commerce). No se conoce una
+implementación pública, con score de confianza por cuenta, operando en una fintech mexicana. `[1][2]`
+
+### P13. Nosotros no somos expertos en fintech — antes de modelar, ¿nos puede explicar en sus palabras los términos básicos del área: falso positivo, falso negativo, recall, precisión y chargeback?
+
+Con gusto, son los términos con los que trabajamos todos los días:
+
+- **Falso positivo:** una transacción **legítima** que el sistema marca por error como fraude. Al
+  cliente se le bloquea o se le pide verificación extra sin haber hecho nada malo; el costo no es
+  dinero perdido directamente, sino fricción, quejas y riesgo de que se vaya con la competencia.
+- **Falso negativo:** una transacción **fraudulenta** que el sistema deja pasar sin marcar. Aquí sí
+  hay pérdida directa de dinero, y puede derivar en un contracargo, una cuenta tomada por un tercero,
+  o una operación de lavado de dinero que pasó desapercibida.
+- **Recall (exhaustividad):** de todo el fraude que realmente ocurrió, qué porcentaje logramos
+  detectar. Nos importa porque cada punto de recall que perdemos es, literalmente, dinero que se nos
+  escapó como falso negativo.
+- **Precisión:** de todo lo que marcamos como fraude, qué porcentaje era fraude de verdad. Nos importa
+  porque cada punto de precisión que perdemos son clientes legítimos convertidos en falsos positivos.
+- **Chargeback (contracargo):** cuando la persona titular de la tarjeta o cuenta disputa un cargo ante
+  su banco alegando que no lo autorizó o que no recibió lo pagado. El comercio pierde el dinero de esa
+  venta, paga una comisión adicional por el proceso, y si acumula demasiados contracargos puede perder
+  su capacidad de seguir procesando pagos. Por eso un falso negativo no es solo "un fraude que no
+  detectamos": normalmente termina convertido en un chargeback que sí se puede medir después.
+- **Score de riesgo:** el número (o probabilidad) que resume qué tan sospechosa es una transacción,
+  calculado por un sistema automatizado a partir de las variables de esa operación y del historial de
+  la cuenta. Es exactamente lo que ustedes proponen calibrar como "nivel de confianza" en su proyecto.
+
+`[7]`
+
+## 3. Respuestas clave (síntesis)
+
+- Hoy se decide con **reglas fijas iguales para todas las cuentas**; el dolor es que "lo normal" es
+  distinto para cada cuenta y las reglas no lo capturan.
+- El costo de un fraude no detectado (**4.59× el monto perdido**) es mucho mayor que el de un falso
+  positivo, pero un falso positivo sí desgasta la relación con el cliente.
+- El fraude que más preocupa (ingeniería social, toma de cuenta) **imita el comportamiento legítimo**,
+  por lo que una regla fija no basta: hace falta comparar contra el historial propio de la cuenta.
+- El valor operativo real está en un **score de confianza de tres niveles** (bloquear / revisar /
+  dejar pasar), no en una etiqueta binaria.
+- Hay restricciones regulatorias (Ley Fintech, UIF, CNBV) que exigen que el criterio sea auditable.
+- El vocabulario del área (falso positivo/negativo, recall, precisión, chargeback, score de riesgo)
+  quedó explicado en P13 y es la base con la que el equipo —sin experiencia previa en fintech—
+  entiende el resto de esta bitácora y el [Canvas](canvas.qmd).
+
+## 4. Reflexión del equipo: qué cambió en nuestro entendimiento
+
+**Antes de la entrevista** pensábamos el proyecto como "clasificar transacciones en fraude o no
+fraude", tomando como referencia directa los datasets de Kaggle y sus etiquetas.
+
+**Después de la entrevista** el equipo ajustó el enfoque en dos puntos centrales:
+
+1. **La unidad de análisis cambia.** No se trata de encontrar un único patrón de fraude válido para
+   todas las cuentas, sino de comparar cada transacción **contra el historial de esa misma cuenta**.
+   Esto convirtió nuestra pregunta de investigación principal en: *¿qué transacciones se comportan
+   como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué
+   nivel de confianza lo afirmamos?*
+2. **El entregable no es una etiqueta, es una confianza.** El valor de negocio está en poder
+   automatizar el bloqueo donde el modelo está muy seguro, sin sumar carga de revisión humana donde
+   no lo está. Eso desplaza el objetivo de minería de una clasificación binaria simple hacia
+   **detección de anomalías por cuenta + calibración de la confianza del veredicto**.
+
+Con ello, el objetivo de minería queda como la combinación de: **(a)** modelado del comportamiento
+histórico por cuenta (no un modelo único para todas), **(b)** score de anomalía frente a ese
+comportamiento, y **(c)** calibración de ese score en una probabilidad interpretable como nivel de
+confianza, validada contra las etiquetas reales disponibles (IEEE-CIS) donde sea posible.
+
+## Fuentes
+
+Ver [Fuentes citadas](fuentes/referencias.qmd). Cada marca `[n]` de esta bitácora remite a esa lista.
