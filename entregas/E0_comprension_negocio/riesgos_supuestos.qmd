@@ -1,0 +1,98 @@
+---
+title: "Supuestos y riesgos"
+subtitle: "E0 · Comprensión del Negocio"
+---
+
+## Supuestos que el equipo da por ciertos
+
+| # | Supuesto | Si no se cumple… |
+|---|---|---|
+| S1 | Las regularidades estadísticas de PaySim (aunque sintético) se parecen lo suficiente a las de transacciones reales como para aprender patrones de comportamiento por cuenta. | El modelo aprendería artefactos de la simulación, no de fraude real. |
+| S2 | Las etiquetas de fraude de PaySim e IEEE-CIS son confiables. | Los umbrales de éxito (recall, precisión) estarían mal calibrados desde el inicio. |
+| S3 | El comportamiento "normal" de una cuenta es razonablemente estable en ventanas cortas (semanas). | La premisa central del proyecto —comparar contra el historial propio— pierde sentido. |
+| S4 | Es operativamente viable automatizar decisiones con un umbral de confianza (en vez de solo reglas o solo revisión humana). | El criterio de éxito de negocio (70% del monto en alta confianza) no sería adoptable aunque el modelo funcione bien. |
+| S5 | Los datasets seguirán disponibles públicamente en Kaggle, con su licencia actual, durante el semestre. | Habría que congelar una copia local desde el inicio del proyecto. |
+| S6 | Un modelo entrenado con datos de e-commerce de EE. UU. (IEEE-CIS) puede usarse como validación cruzada de señales, aunque el contexto de negocio (fintech LatAm) sea distinto. | La validación cruzada perdería sentido y quedaría solo PaySim, sin contraste con datos reales. |
+
+## Riesgos específicos del proyecto y su mitigación
+
+### R1 — Desbalance extremo de clases
+
+El fraude es el 0.13% de los casos en PaySim y el 3.5% en IEEE-CIS. Con esa proporción, un modelo que
+siempre predice "no fraude" tiene más del 96–99.9% de exactitud y es completamente inútil.
+
+- **Mitigación:** evaluar exclusivamente con PR-AUC, recall ponderado por monto y precisión en el
+  nivel de alta confianza —nunca con exactitud—; usar pesos de clase, submuestreo o sobremuestreo
+  (SMOTE) solo en el conjunto de entrenamiento, nunca en el de prueba.
+
+### R2 — Ninguno de los datasets es de una fintech latinoamericana real
+
+PaySim simula un servicio de dinero móvil de un país africano; IEEE-CIS son transacciones reales de
+e-commerce de Vesta Corporation en Estados Unidos. El objetivo de negocio (una fintech LatAm) no
+coincide geográficamente con ninguno de los dos.
+
+- **Mitigación:** presentar el proyecto explícitamente como el desarrollo y validación de una
+  **metodología transferible** de detección de anomalías por cuenta con confianza calibrada, no como
+  un diagnóstico del fraude en una fintech real. Sustentar el objetivo de negocio y al stakeholder
+  simulado con reportes de la industria del fraude en LatAm (no con los datos de modelado), y dejarlo
+  explícito en el Canvas y en la presentación final.
+
+### R3 — PaySim no tiene fraude "real": es una simulación con reglas del propio autor
+
+Un modelo puede aprender a detectar los patrones que el simulador usó para generar fraude, no fraude
+genuino, lo que infla artificialmente el desempeño reportado.
+
+- **Mitigación:** usar IEEE-CIS (datos reales, aunque de otro contexto) como validación cruzada de
+  que las variables y el enfoque de anomalías generalizan más allá de las reglas del simulador; ser
+  explícitos en el reporte sobre esta limitación y no presentar las métricas de PaySim solas como
+  evidencia suficiente.
+
+### R4 — El fraude es adaptativo: el comportamiento "normal" que se aprende puede quedar obsoleto
+
+Los tipos de fraude que más preocupan al stakeholder (ingeniería social, toma de cuenta) **imitan
+deliberadamente** el comportamiento legítimo de la cuenta atacada, por lo que un perfil histórico
+puede dejar de ser una señal útil si el atacante ya conoce y replica ese patrón.
+
+- **Mitigación:** validación temporal por ventanas móviles (pregunta P4), medir la degradación del
+  desempeño en el tiempo, y diseñar el perfil de cuenta para que se actualice periódicamente en vez de
+  fijarse una sola vez.
+
+### R5 — Calibrar la confianza es difícil con tan pocos positivos
+
+Para calibrar bien la cola de "alta confianza" hacen falta suficientes ejemplos de fraude confirmado
+en esa región del score, y el fraude es escaso por definición.
+
+- **Mitigación:** usar calibración con validación cruzada estratificada (isotonic regression),
+  reportar el error de calibración esperado (ECE) con sus intervalos, y considerar técnicas robustas a
+  desbalance (p. ej. calibración por segmentos de monto) antes de confiar en el umbral final.
+
+### R6 — Restricciones de licencia y de uso
+
+Los datasets de Kaggle tienen licencias orientadas a uso académico/de competencia, no a un despliegue
+comercial. Además, cualquier criterio de bloqueo real en México debería ser auditable frente a la Ley
+Fintech y reportable a la UIF, algo que un proyecto de curso no puede satisfacer plenamente.
+
+- **Mitigación:** declarar explícitamente el alcance como metodológico y académico, sin presentarlo
+  como una solución lista para producción; documentar qué requisitos de explicabilidad regulatoria
+  quedarían pendientes para una implementación real.
+
+### R7 — Fuga de información entre entrenamiento y prueba a nivel de cuenta
+
+Si transacciones de una misma cuenta quedan repartidas entre entrenamiento y prueba, el modelo puede
+"memorizar" el comportamiento de esa cuenta específica en vez de aprender un criterio generalizable.
+
+- **Mitigación:** partición estrictamente temporal y, cuando sea posible, verificar que las cuentas de
+  prueba no se solapen indebidamente con las de entrenamiento; revisión cruzada del pipeline entre
+  integrantes del equipo.
+
+## Resumen de exposición
+
+| Riesgo | Probabilidad | Impacto | Prioridad de atención |
+|---|---|---|---|
+| R1 Desbalance extremo | Alta | Alto | 1 |
+| R2 Datos no representan el contexto real | Alta | Alto | 1 |
+| R3 Fraude simulado en PaySim | Media | Alto | 2 |
+| R4 Fraude adaptativo | Media | Alto | 2 |
+| R5 Calibración difícil | Alta | Medio | 2 |
+| R7 Fuga de información por cuenta | Media | Alto | 2 |
+| R6 Licencias y alcance regulatorio | Baja | Medio | 3 |
