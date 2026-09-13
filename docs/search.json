@@ -1,0 +1,345 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "",
+    "text": "Una fintech de pagos digitales que opera en México/LatAm necesita reducir sus pérdidas por fraude sin dañar la experiencia de las personas usuarias legítimas. El eje del proyecto no es solo “clasificar fraude sí/no”: es detectar cuándo una transacción se aparta del comportamiento habitual de esa cuenta específica —más allá de reglas fijas de monto u horario— y hacerlo con un nivel de confianza explícito que permita decidir automáticamente entre bloquear, mandar a revisión humana o dejar pasar la operación.\n\nPregunta guía del proyecto: ¿cómo sabemos si una transacción es fraude, y con qué seguridad lo decimos?\n\nEl proyecto sigue la metodología CRISP-DM y se entrega por fases."
+  },
+  {
+    "objectID": "index.html#de-qué-trata-el-proyecto",
+    "href": "index.html#de-qué-trata-el-proyecto",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "",
+    "text": "Una fintech de pagos digitales que opera en México/LatAm necesita reducir sus pérdidas por fraude sin dañar la experiencia de las personas usuarias legítimas. El eje del proyecto no es solo “clasificar fraude sí/no”: es detectar cuándo una transacción se aparta del comportamiento habitual de esa cuenta específica —más allá de reglas fijas de monto u horario— y hacerlo con un nivel de confianza explícito que permita decidir automáticamente entre bloquear, mandar a revisión humana o dejar pasar la operación.\n\nPregunta guía del proyecto: ¿cómo sabemos si una transacción es fraude, y con qué seguridad lo decimos?\n\nEl proyecto sigue la metodología CRISP-DM y se entrega por fases."
+  },
+  {
+    "objectID": "index.html#estado-por-fase-crisp-dm",
+    "href": "index.html#estado-por-fase-crisp-dm",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "Estado por fase (CRISP-DM)",
+    "text": "Estado por fase (CRISP-DM)\n\n\n\n#\nFase\nEstado\n\n\n\n\n1\nComprensión del negocio\nEn curso — Entrega E0\n\n\n2\nComprensión de los datos\nPendiente\n\n\n3\nPreparación de los datos\nPendiente\n\n\n4\nModelado\nPendiente\n\n\n5\nEvaluación\nPendiente\n\n\n6\nDespliegue\nReporte y presentación final"
+  },
+  {
+    "objectID": "index.html#entrega-actual",
+    "href": "index.html#entrega-actual",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "Entrega actual",
+    "text": "Entrega actual\n\nE0 · Comprensión del Negocio\n\nBitácora de la reunión con el stakeholder\nBusiness Understanding Canvas\nPreguntas de investigación priorizadas\nCriterio de éxito en términos de negocio\nSupuestos y riesgos\nDocumentación de uso de herramientas de IA\nFuentes citadas"
+  },
+  {
+    "objectID": "index.html#fuentes-de-datos-previstas",
+    "href": "index.html#fuentes-de-datos-previstas",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "Fuentes de datos previstas",
+    "text": "Fuentes de datos previstas\n\n\n\n\n\n\n\n\nFuente\nContenido\nPor qué se usa\n\n\n\n\nPaySim (Kaggle / Lopez-Rojas et al., 2016)\n~6.3M transacciones simuladas de dinero móvil, 744 pasos (30 días), con cuentas identificadas (nameOrig, nameDest) y su saldo antes/después de cada operación. Fraude: 0.13% de los casos.\nEs el único de los dos con estructura temporal por cuenta: permite construir el perfil de comportamiento histórico que exige la pregunta central del proyecto.\n\n\nIEEE-CIS Fraud Detection (Kaggle / Vesta Corporation)\n590,540 transacciones de e-commerce (EE. UU.), 6 meses, 393 variables, fraude real etiquetado: 3.5% de los casos.\nDatos reales (no sintéticos) con etiqueta de fraude confiable: sirve para validar si las señales de anomalía encontradas en PaySim generalizan, y como referencia de clasificación supervisada.\n\n\nReportes de industria sobre fraude digital en LatAm (AppGate, Stripe, Condusef-Banxico)\nEstadísticas de crecimiento del fraude, costo por transacción fraudulenta, tasas de contracargo en México\nSustentan el objetivo de negocio y las respuestas del stakeholder simulado — no son datos de modelado.\n\n\nMarco regulatorio (Ley Fintech, CNBV)\nObligaciones de prevención de fraude y reporte a la UIF\nRestricciones/requisitos de la Sección 3 del Canvas.\n\n\n\n\nNota de honestidad metodológica: ninguno de los dos datasets de modelado proviene de una fintech latinoamericana real. Este proyecto desarrolla y valida una metodología transferible de detección de anomalías por cuenta con estimación de confianza; no es un diagnóstico del fraude en una empresa real. El detalle está en riesgos y supuestos."
+  },
+  {
+    "objectID": "index.html#equipo",
+    "href": "index.html#equipo",
+    "title": "Proyecto Integrador · Minería de Datos",
+    "section": "Equipo",
+    "text": "Equipo\nVega Navas Saúl · Cimmino Yáñez Nicholas Joseph · Benítez Pérez Kristian Leonel · Herrera Cuamatla Jennifer Jade — Facultad de Ciencias, UNAM. Números de cuenta en el README del repositorio."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/riesgos_supuestos.html",
+    "href": "entregas/E0_comprension_negocio/riesgos_supuestos.html",
+    "title": "Supuestos y riesgos",
+    "section": "",
+    "text": "#\nSupuesto\nSi no se cumple…\n\n\n\n\nS1\nLas regularidades estadísticas de PaySim (aunque sintético) se parecen lo suficiente a las de transacciones reales como para aprender patrones de comportamiento por cuenta.\nEl modelo aprendería artefactos de la simulación, no de fraude real.\n\n\nS2\nLas etiquetas de fraude de PaySim e IEEE-CIS son confiables.\nLos umbrales de éxito (recall, precisión) estarían mal calibrados desde el inicio.\n\n\nS3\nEl comportamiento “normal” de una cuenta es razonablemente estable en ventanas cortas (semanas).\nLa premisa central del proyecto —comparar contra el historial propio— pierde sentido.\n\n\nS4\nEs operativamente viable automatizar decisiones con un umbral de confianza (en vez de solo reglas o solo revisión humana).\nEl criterio de éxito de negocio (70% del monto en alta confianza) no sería adoptable aunque el modelo funcione bien.\n\n\nS5\nLos datasets seguirán disponibles públicamente en Kaggle, con su licencia actual, durante el semestre.\nHabría que congelar una copia local desde el inicio del proyecto.\n\n\nS6\nUn modelo entrenado con datos de e-commerce de EE. UU. (IEEE-CIS) puede usarse como validación cruzada de señales, aunque el contexto de negocio (fintech LatAm) sea distinto.\nLa validación cruzada perdería sentido y quedaría solo PaySim, sin contraste con datos reales."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/riesgos_supuestos.html#supuestos-que-el-equipo-da-por-ciertos",
+    "href": "entregas/E0_comprension_negocio/riesgos_supuestos.html#supuestos-que-el-equipo-da-por-ciertos",
+    "title": "Supuestos y riesgos",
+    "section": "",
+    "text": "#\nSupuesto\nSi no se cumple…\n\n\n\n\nS1\nLas regularidades estadísticas de PaySim (aunque sintético) se parecen lo suficiente a las de transacciones reales como para aprender patrones de comportamiento por cuenta.\nEl modelo aprendería artefactos de la simulación, no de fraude real.\n\n\nS2\nLas etiquetas de fraude de PaySim e IEEE-CIS son confiables.\nLos umbrales de éxito (recall, precisión) estarían mal calibrados desde el inicio.\n\n\nS3\nEl comportamiento “normal” de una cuenta es razonablemente estable en ventanas cortas (semanas).\nLa premisa central del proyecto —comparar contra el historial propio— pierde sentido.\n\n\nS4\nEs operativamente viable automatizar decisiones con un umbral de confianza (en vez de solo reglas o solo revisión humana).\nEl criterio de éxito de negocio (70% del monto en alta confianza) no sería adoptable aunque el modelo funcione bien.\n\n\nS5\nLos datasets seguirán disponibles públicamente en Kaggle, con su licencia actual, durante el semestre.\nHabría que congelar una copia local desde el inicio del proyecto.\n\n\nS6\nUn modelo entrenado con datos de e-commerce de EE. UU. (IEEE-CIS) puede usarse como validación cruzada de señales, aunque el contexto de negocio (fintech LatAm) sea distinto.\nLa validación cruzada perdería sentido y quedaría solo PaySim, sin contraste con datos reales."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/riesgos_supuestos.html#riesgos-específicos-del-proyecto-y-su-mitigación",
+    "href": "entregas/E0_comprension_negocio/riesgos_supuestos.html#riesgos-específicos-del-proyecto-y-su-mitigación",
+    "title": "Supuestos y riesgos",
+    "section": "Riesgos específicos del proyecto y su mitigación",
+    "text": "Riesgos específicos del proyecto y su mitigación\n\nR1 — Desbalance extremo de clases\nEl fraude es el 0.13% de los casos en PaySim y el 3.5% en IEEE-CIS. Con esa proporción, un modelo que siempre predice “no fraude” tiene más del 96–99.9% de exactitud y es completamente inútil.\n\nMitigación: evaluar exclusivamente con PR-AUC, recall ponderado por monto y precisión en el nivel de alta confianza —nunca con exactitud—; usar pesos de clase, submuestreo o sobremuestreo (SMOTE) solo en el conjunto de entrenamiento, nunca en el de prueba.\n\n\n\nR2 — Ninguno de los datasets es de una fintech latinoamericana real\nPaySim simula un servicio de dinero móvil de un país africano; IEEE-CIS son transacciones reales de e-commerce de Vesta Corporation en Estados Unidos. El objetivo de negocio (una fintech LatAm) no coincide geográficamente con ninguno de los dos.\n\nMitigación: presentar el proyecto explícitamente como el desarrollo y validación de una metodología transferible de detección de anomalías por cuenta con confianza calibrada, no como un diagnóstico del fraude en una fintech real. Sustentar el objetivo de negocio y al stakeholder simulado con reportes de la industria del fraude en LatAm (no con los datos de modelado), y dejarlo explícito en el Canvas y en la presentación final.\n\n\n\nR3 — PaySim no tiene fraude “real”: es una simulación con reglas del propio autor\nUn modelo puede aprender a detectar los patrones que el simulador usó para generar fraude, no fraude genuino, lo que infla artificialmente el desempeño reportado.\n\nMitigación: usar IEEE-CIS (datos reales, aunque de otro contexto) como validación cruzada de que las variables y el enfoque de anomalías generalizan más allá de las reglas del simulador; ser explícitos en el reporte sobre esta limitación y no presentar las métricas de PaySim solas como evidencia suficiente.\n\n\n\nR4 — El fraude es adaptativo: el comportamiento “normal” que se aprende puede quedar obsoleto\nLos tipos de fraude que más preocupan al stakeholder (ingeniería social, toma de cuenta) imitan deliberadamente el comportamiento legítimo de la cuenta atacada, por lo que un perfil histórico puede dejar de ser una señal útil si el atacante ya conoce y replica ese patrón.\n\nMitigación: validación temporal por ventanas móviles (pregunta P4), medir la degradación del desempeño en el tiempo, y diseñar el perfil de cuenta para que se actualice periódicamente en vez de fijarse una sola vez.\n\n\n\nR5 — Calibrar la confianza es difícil con tan pocos positivos\nPara calibrar bien la cola de “alta confianza” hacen falta suficientes ejemplos de fraude confirmado en esa región del score, y el fraude es escaso por definición.\n\nMitigación: usar calibración con validación cruzada estratificada (isotonic regression), reportar el error de calibración esperado (ECE) con sus intervalos, y considerar técnicas robustas a desbalance (p. ej. calibración por segmentos de monto) antes de confiar en el umbral final.\n\n\n\nR6 — Restricciones de licencia y de uso\nLos datasets de Kaggle tienen licencias orientadas a uso académico/de competencia, no a un despliegue comercial. Además, cualquier criterio de bloqueo real en México debería ser auditable frente a la Ley Fintech y reportable a la UIF, algo que un proyecto de curso no puede satisfacer plenamente.\n\nMitigación: declarar explícitamente el alcance como metodológico y académico, sin presentarlo como una solución lista para producción; documentar qué requisitos de explicabilidad regulatoria quedarían pendientes para una implementación real.\n\n\n\nR7 — Fuga de información entre entrenamiento y prueba a nivel de cuenta\nSi transacciones de una misma cuenta quedan repartidas entre entrenamiento y prueba, el modelo puede “memorizar” el comportamiento de esa cuenta específica en vez de aprender un criterio generalizable.\n\nMitigación: partición estrictamente temporal y, cuando sea posible, verificar que las cuentas de prueba no se solapen indebidamente con las de entrenamiento; revisión cruzada del pipeline entre integrantes del equipo."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/riesgos_supuestos.html#resumen-de-exposición",
+    "href": "entregas/E0_comprension_negocio/riesgos_supuestos.html#resumen-de-exposición",
+    "title": "Supuestos y riesgos",
+    "section": "Resumen de exposición",
+    "text": "Resumen de exposición\n\n\n\nRiesgo\nProbabilidad\nImpacto\nPrioridad de atención\n\n\n\n\nR1 Desbalance extremo\nAlta\nAlto\n1\n\n\nR2 Datos no representan el contexto real\nAlta\nAlto\n1\n\n\nR3 Fraude simulado en PaySim\nMedia\nAlto\n2\n\n\nR4 Fraude adaptativo\nMedia\nAlto\n2\n\n\nR5 Calibración difícil\nAlta\nMedio\n2\n\n\nR7 Fuga de información por cuenta\nMedia\nAlto\n2\n\n\nR6 Licencias y alcance regulatorio\nBaja\nMedio\n3"
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html",
+    "href": "entregas/E0_comprension_negocio/bitacora.html",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "",
+    "text": "Campo\nDetalle\n\n\n\n\nFecha\n11 de septiembre de 2026\n\n\nDuración\n~50 minutos\n\n\nModalidad\nEjercicio de rol conducido con IA (stakeholder simulado)\n\n\nRol representado\nAnalista de Prevención de Fraude en una fintech de pagos digitales que opera en México (perfil compuesto, no representa a una empresa real)\n\n\nParticipantes del equipo\nVega Navas Saúl, Cimmino Yáñez Nicholas Joseph, Benítez Pérez Kristian Leonel, Herrera Cuamatla Jennifer Jade\n\n\n\n\n\nEl equipo no tiene acceso directo a personal de riesgo/fraude de una fintech dentro de la ventana de la entrega. Además, por la naturaleza del problema, ninguna empresa real publica sus patrones internos de fraude (sería revelar cómo evadir sus controles). Por eso el ejercicio de rol no representa a una compañía específica: es un perfil compuesto, construido con Claude Sonnet 5 siguiendo un guion fijo, y sus respuestas se fundamentan únicamente en fuentes públicas verificables —reportes de la industria del fraude en LatAm y el marco regulatorio mexicano—, citadas con la notación [n] y listadas en Fuentes citadas. El prompt exacto que dirigió este ejercicio está registrado en Uso de IA — Uso 2. No se incluyen afirmaciones sin sustento documental.\n\n\n\n\n\n\nWarningPendiente del equipo antes de entregar\n\n\n\nVerificar cada cita [n] contra la fuente original, y asegurarse de que todos los integrantes del equipo conozcan a fondo el contenido de esta entrega antes de la verificación oral: cualquiera puede ser preguntado y una respuesta insuficiente anula la entrega de todo el equipo."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html#datos-de-la-reunión",
+    "href": "entregas/E0_comprension_negocio/bitacora.html#datos-de-la-reunión",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "",
+    "text": "Campo\nDetalle\n\n\n\n\nFecha\n11 de septiembre de 2026\n\n\nDuración\n~50 minutos\n\n\nModalidad\nEjercicio de rol conducido con IA (stakeholder simulado)\n\n\nRol representado\nAnalista de Prevención de Fraude en una fintech de pagos digitales que opera en México (perfil compuesto, no representa a una empresa real)\n\n\nParticipantes del equipo\nVega Navas Saúl, Cimmino Yáñez Nicholas Joseph, Benítez Pérez Kristian Leonel, Herrera Cuamatla Jennifer Jade\n\n\n\n\n\nEl equipo no tiene acceso directo a personal de riesgo/fraude de una fintech dentro de la ventana de la entrega. Además, por la naturaleza del problema, ninguna empresa real publica sus patrones internos de fraude (sería revelar cómo evadir sus controles). Por eso el ejercicio de rol no representa a una compañía específica: es un perfil compuesto, construido con Claude Sonnet 5 siguiendo un guion fijo, y sus respuestas se fundamentan únicamente en fuentes públicas verificables —reportes de la industria del fraude en LatAm y el marco regulatorio mexicano—, citadas con la notación [n] y listadas en Fuentes citadas. El prompt exacto que dirigió este ejercicio está registrado en Uso de IA — Uso 2. No se incluyen afirmaciones sin sustento documental.\n\n\n\n\n\n\nWarningPendiente del equipo antes de entregar\n\n\n\nVerificar cada cita [n] contra la fuente original, y asegurarse de que todos los integrantes del equipo conozcan a fondo el contenido de esta entrega antes de la verificación oral: cualquiera puede ser preguntado y una respuesta insuficiente anula la entrega de todo el equipo."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html#guion-de-preguntas-y-respuestas",
+    "href": "entregas/E0_comprension_negocio/bitacora.html#guion-de-preguntas-y-respuestas",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "2. Guion de preguntas y respuestas",
+    "text": "2. Guion de preguntas y respuestas\n\nP1. ¿Cómo deciden hoy si una transacción es fraudulenta o no?\nHoy se combina un motor de reglas fijas (monto por encima de un umbral, hora inusual, cambio de dispositivo o geolocalización, velocidad de operaciones) con revisión manual de los casos marcados. Las reglas son las mismas para todas las cuentas: no distinguen entre una cuenta que habitualmente mueve montos altos y una que no. [8]\n\n\nP2. ¿Qué patrones de fraude les preocupan más actualmente?\nEl fraude vía ingeniería social y toma de cuenta (account takeover) crecen con fuerza en la región: la banca digital en LatAm registró un crecimiento de fraude por ingeniería social del 155% en 2025–2026, y los intentos con herramientas de acceso remoto (RAT) crecieron 409% en el mismo periodo. Este tipo de fraude es particularmente difícil de detectar con reglas fijas porque imita el comportamiento legítimo del dueño real de la cuenta. [3][4]\n\n\nP3. ¿Qué ocurre cuando el sistema marca una transacción como sospechosa?\nDepende de la certeza: si la regla es muy clara (p. ej. monto extremo desde un dispositivo nunca antes visto), se bloquea automáticamente; si es ambigua, se manda a un analista humano, lo que toma tiempo y a veces frustra al cliente legítimo cuya operación se retrasa. No existe hoy un tercer nivel intermedio basado en un score de confianza continuo. [8]\n\n\nP4. ¿Qué decisiones se toman hoy sin apoyo de datos que les gustaría fundamentar mejor?\nTres, principalmente: (a) cuándo bloquear automáticamente vs. mandar a revisión humana, hoy basado en reglas binarias, no en un nivel de confianza; (b) cuánto tiempo puede tardar una revisión manual sin perder al cliente; y (c) cómo ajustar el umbral de sensibilidad cuando cambia el tipo de fraude dominante. [8]\n\n\nP5. ¿Qué datos de comportamiento transaccional tienen disponibles por cuenta?\nHistorial de transacciones por cuenta (montos, frecuencia, contrapartes habituales, dispositivo, geolocalización aproximada) durante los últimos meses. La dificultad es que ese historial es distinto para cada cuenta: lo “normal” para una no lo es para otra, por lo que un modelo genérico entrenado con datos de todas las cuentas mezcladas pierde esa referencia individual. [1][8]\n\n\nP6. ¿Cómo afecta un fraude no detectado o un falso positivo al negocio?\nEl costo es asimétrico: en instituciones financieras de LatAm, cada transacción fraudulenta cuesta en promedio 4.59 veces el valor de lo perdido (por investigación, reembolso, atención al cliente y reputación), frente a 3.07 veces en el sector minorista. Un falso positivo, en cambio, cuesta menos en dinero directo pero deteriora la confianza del cliente legítimo y puede llevarlo a irse con la competencia. En México, la magnitud no es menor: solo entre enero y septiembre de 2022, la CONDUSEF registró 72,193 casos de fraude en medios de pago, el 49% de todas las reclamaciones bancarias recibidas en ese periodo — el fraude no es un problema marginal, es la principal fuente de quejas de los usuarios contra sus bancos. [3][5]\n\n\nP7. ¿Qué papel juega la regla fija frente a un modelo de comportamiento por cuenta?\nLas reglas fijas son fáciles de auditar y explicar, pero no se adaptan a que cada cuenta tiene su propio patrón normal, y son fáciles de evadir una vez que se conocen los umbrales. El 38% del fraude reciente en la región se atribuye a métodos de pago nuevos y emergentes (pagos móviles, cripto), que las reglas fijas heredadas no cubren bien. [3]\n\n\nP8. ¿Qué restricciones regulatorias tienen?\nEn México, la Ley para Regular las Instituciones de Tecnología Financiera (“Ley Fintech”, vigente desde marzo de 2018, con reforma en enero de 2024) obliga a las instituciones a prevenir y reducir el riesgo de fraude y lavado de dinero, y a reportar actividades inusuales a la Unidad de Inteligencia Financiera (UIF), bajo supervisión de la CNBV y el Banco de México. Cualquier modelo que bloquee o marque cuentas debe ser auditable frente a este marco. [6]\n\n\nP9. ¿Qué significaría “éxito” para ustedes en un proyecto así?\nQue el sistema entregue, por transacción, no solo una etiqueta sino un nivel de confianza: alto (bloquear automáticamente), medio (revisión humana) o bajo (dejar pasar). Que la mayoría del monto fraudulento caiga en el nivel alto —para automatizar su bloqueo sin depender de analistas—, y que el nivel medio no crezca tanto que sature al equipo de revisión. [8]\n\n\nP10. ¿Cada cuándo se actuaría con esta información?\nEn el momento de la transacción (decisión casi inmediata para bloquear o dejar pasar) y, en paralelo, una revisión periódica (diaria o semanal) para reentrenar el perfil de comportamiento de cada cuenta, porque el comportamiento legítimo también cambia con el tiempo. [8]\n\n\nP11. ¿Qué reticencias tendrían para adoptar un modelo de anomalías con score de confianza?\nQue el score no sea interpretable para un analista humano ni auditable frente al regulador; que el modelo tarde en “aprender” el comportamiento de cuentas nuevas (sin historial); y que la calibración de la confianza sea poco confiable precisamente donde más importa: en los pocos casos de fraude real (menos del 1% de las transacciones en datasets de referencia). [8][1]\n\n\nP12. ¿Hay antecedentes de estudios o soluciones similares?\nSí: el uso de detección de anomalías y modelos de comportamiento por entidad es una línea activa en la literatura de detección de fraude (p. ej. el trabajo original de PaySim sobre simulación de dinero móvil, y el reto IEEE-CIS de Vesta Corporation sobre fraude real en e-commerce). No se conoce una implementación pública, con score de confianza por cuenta, operando en una fintech mexicana. [1][2]\n\n\nP13. Nosotros no somos expertos en fintech — antes de modelar, ¿nos puede explicar en sus palabras los términos básicos del área: falso positivo, falso negativo, recall, precisión y chargeback?\nCon gusto, son los términos con los que trabajamos todos los días:\n\nFalso positivo: una transacción legítima que el sistema marca por error como fraude. Al cliente se le bloquea o se le pide verificación extra sin haber hecho nada malo; el costo no es dinero perdido directamente, sino fricción, quejas y riesgo de que se vaya con la competencia.\nFalso negativo: una transacción fraudulenta que el sistema deja pasar sin marcar. Aquí sí hay pérdida directa de dinero, y puede derivar en un contracargo, una cuenta tomada por un tercero, o una operación de lavado de dinero que pasó desapercibida.\nRecall (exhaustividad): de todo el fraude que realmente ocurrió, qué porcentaje logramos detectar. Nos importa porque cada punto de recall que perdemos es, literalmente, dinero que se nos escapó como falso negativo.\nPrecisión: de todo lo que marcamos como fraude, qué porcentaje era fraude de verdad. Nos importa porque cada punto de precisión que perdemos son clientes legítimos convertidos en falsos positivos.\nChargeback (contracargo): cuando la persona titular de la tarjeta o cuenta disputa un cargo ante su banco alegando que no lo autorizó o que no recibió lo pagado. El comercio pierde el dinero de esa venta, paga una comisión adicional por el proceso, y si acumula demasiados contracargos puede perder su capacidad de seguir procesando pagos. Por eso un falso negativo no es solo “un fraude que no detectamos”: normalmente termina convertido en un chargeback que sí se puede medir después.\nScore de riesgo: el número (o probabilidad) que resume qué tan sospechosa es una transacción, calculado por un sistema automatizado a partir de las variables de esa operación y del historial de la cuenta. Es exactamente lo que ustedes proponen calibrar como “nivel de confianza” en su proyecto.\n\n[7]"
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html#respuestas-clave-síntesis",
+    "href": "entregas/E0_comprension_negocio/bitacora.html#respuestas-clave-síntesis",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "3. Respuestas clave (síntesis)",
+    "text": "3. Respuestas clave (síntesis)\n\nHoy se decide con reglas fijas iguales para todas las cuentas; el dolor es que “lo normal” es distinto para cada cuenta y las reglas no lo capturan.\nEl costo de un fraude no detectado (4.59× el monto perdido) es mucho mayor que el de un falso positivo, pero un falso positivo sí desgasta la relación con el cliente.\nEl fraude que más preocupa (ingeniería social, toma de cuenta) imita el comportamiento legítimo, por lo que una regla fija no basta: hace falta comparar contra el historial propio de la cuenta.\nEl valor operativo real está en un score de confianza de tres niveles (bloquear / revisar / dejar pasar), no en una etiqueta binaria.\nHay restricciones regulatorias (Ley Fintech, UIF, CNBV) que exigen que el criterio sea auditable.\nEl vocabulario del área (falso positivo/negativo, recall, precisión, chargeback, score de riesgo) quedó explicado en P13 y es la base con la que el equipo —sin experiencia previa en fintech— entiende el resto de esta bitácora y el Canvas."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html#reflexión-del-equipo-qué-cambió-en-nuestro-entendimiento",
+    "href": "entregas/E0_comprension_negocio/bitacora.html#reflexión-del-equipo-qué-cambió-en-nuestro-entendimiento",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "4. Reflexión del equipo: qué cambió en nuestro entendimiento",
+    "text": "4. Reflexión del equipo: qué cambió en nuestro entendimiento\nAntes de la entrevista pensábamos el proyecto como “clasificar transacciones en fraude o no fraude”, tomando como referencia directa los datasets de Kaggle y sus etiquetas.\nDespués de la entrevista el equipo ajustó el enfoque en dos puntos centrales:\n\nLa unidad de análisis cambia. No se trata de encontrar un único patrón de fraude válido para todas las cuentas, sino de comparar cada transacción contra el historial de esa misma cuenta. Esto convirtió nuestra pregunta de investigación principal en: ¿qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza lo afirmamos?\nEl entregable no es una etiqueta, es una confianza. El valor de negocio está en poder automatizar el bloqueo donde el modelo está muy seguro, sin sumar carga de revisión humana donde no lo está. Eso desplaza el objetivo de minería de una clasificación binaria simple hacia detección de anomalías por cuenta + calibración de la confianza del veredicto.\n\nCon ello, el objetivo de minería queda como la combinación de: (a) modelado del comportamiento histórico por cuenta (no un modelo único para todas), (b) score de anomalía frente a ese comportamiento, y (c) calibración de ese score en una probabilidad interpretable como nivel de confianza, validada contra las etiquetas reales disponibles (IEEE-CIS) donde sea posible."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/bitacora.html#fuentes",
+    "href": "entregas/E0_comprension_negocio/bitacora.html#fuentes",
+    "title": "Bitácora de la reunión con el stakeholder",
+    "section": "Fuentes",
+    "text": "Fuentes\nVer Fuentes citadas. Cada marca [n] de esta bitácora remite a esa lista."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/index.html",
+    "href": "entregas/E0_comprension_negocio/index.html",
+    "title": "E0 · Comprensión del Negocio",
+    "section": "",
+    "text": "E0 corresponde a la fase 1 de CRISP-DM. Antes de tocar datos o código, el equipo valida que el problema elegido es real, relevante y medible, y lo traduce en:\n\nun objetivo de negocio (en el lenguaje del dominio),\nun objetivo de minería de datos (la tarea técnica), y\nun criterio de éxito verificable expresado en términos de negocio."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/index.html#qué-cubre-esta-entrega",
+    "href": "entregas/E0_comprension_negocio/index.html#qué-cubre-esta-entrega",
+    "title": "E0 · Comprensión del Negocio",
+    "section": "",
+    "text": "E0 corresponde a la fase 1 de CRISP-DM. Antes de tocar datos o código, el equipo valida que el problema elegido es real, relevante y medible, y lo traduce en:\n\nun objetivo de negocio (en el lenguaje del dominio),\nun objetivo de minería de datos (la tarea técnica), y\nun criterio de éxito verificable expresado en términos de negocio."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/index.html#decisiones-de-alcance-tomadas-por-el-equipo",
+    "href": "entregas/E0_comprension_negocio/index.html#decisiones-de-alcance-tomadas-por-el-equipo",
+    "title": "E0 · Comprensión del Negocio",
+    "section": "Decisiones de alcance tomadas por el equipo",
+    "text": "Decisiones de alcance tomadas por el equipo\n\n\n\n\n\n\n\n\nDecisión\nElección\nMotivo\n\n\n\n\nTema\nFraude en reembolsos/transacciones fintech\nBuen ajuste con el perfil técnico del equipo (Ciencia de la Computación): clasificación desbalanceada, detección de anomalías y estimación de confianza dan margen para justificar decisiones técnicas a futuro.\n\n\nStakeholder\nSimulado, perfil compuesto — analista de prevención de fraude en una fintech de pagos digitales que opera en México\nNo se representa a ninguna empresa real; se sustenta con reportes públicos de la industria del fraude en LatAm y con el marco regulatorio mexicano (Ley Fintech, CNBV).\n\n\nDatos\nPaySim (estructura temporal por cuenta) + IEEE-CIS Fraud Detection (etiquetas reales, validación cruzada)\nNinguno es de una fintech LatAm real; se documenta como limitación explícita, no se oculta.\n\n\nPregunta central del proyecto\n¿Qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza lo afirmamos?\nDecisión explícita del equipo: el valor no está solo en clasificar fraude/no-fraude, sino en modelar el comportamiento por cuenta y cuantificar qué tan seguros estamos del veredicto."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/index.html#entregables",
+    "href": "entregas/E0_comprension_negocio/index.html#entregables",
+    "title": "E0 · Comprensión del Negocio",
+    "section": "Entregables",
+    "text": "Entregables\n\n\n\n#\nEntregable\nPágina\n\n\n\n\n1\nBitácora de la reunión con el stakeholder\nbitacora.qmd\n\n\n2\nBusiness Understanding Canvas (1 página)\ncanvas.qmd\n\n\n3\nPreguntas de investigación priorizadas\npreguntas.qmd\n\n\n4\nCriterio de éxito en términos de negocio\ncriterio_exito.qmd\n\n\n5\nSupuestos y riesgos\nriesgos_supuestos.qmd\n\n\n—\nDocumentación de uso de IA\nuso_ia.qmd\n\n\n—\nFuentes citadas\nfuentes/referencias.qmd"
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/index.html#síntesis-de-una-línea",
+    "href": "entregas/E0_comprension_negocio/index.html#síntesis-de-una-línea",
+    "title": "E0 · Comprensión del Negocio",
+    "section": "Síntesis de una línea",
+    "text": "Síntesis de una línea\n\nDetectar, para cada cuenta, cuándo una transacción se aparta de su propio comportamiento habitual —no de una regla genérica— y decir con qué confianza se afirma que es fraude, para poder bloquear automáticamente lo que es casi seguro, mandar a revisión lo dudoso, y no friccionar al resto."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html",
+    "title": "Fuentes citadas",
+    "section": "",
+    "text": "Important\n\n\n\nEl stakeholder de E0 es simulado y de perfil compuesto (no representa a una empresa real). Cada respuesta de la bitácora se apoya en una de las fuentes de esta lista mediante la marca [n], numeradas en el orden en que aparecen en este documento (no en el orden en que se citan en la bitácora, ni heredadas de una versión anterior sobre otro tema). Todas se verificaron mediante búsqueda web el 11 de septiembre de 2026; se recomienda volver a abrir cada enlace antes de la entrega final."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#datos-de-modelado",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#datos-de-modelado",
+    "title": "Fuentes citadas",
+    "section": "Datos de modelado",
+    "text": "Datos de modelado\n[1] PaySim — Lopez-Rojas, E. A.; Elmir, A.; Axelsson, S. “PaySim: A financial mobile money simulator for fraud detection.” The 28th European Modeling and Simulation Symposium (EMSS 2016), Larnaca, Chipre. Simulador basado en agentes que reproduce, de forma sintética, un mes de transacciones (744 pasos) de un servicio real de dinero móvil de un país africano: ~6.3 millones de transacciones, con cuentas identificadas (nameOrig, nameDest) y saldo antes/después de cada operación — es lo que permite construir el historial de comportamiento por cuenta que exige la pregunta central del proyecto (P1 de preguntas.qmd); el fraude representa el 0.13% de los casos (8,213 transacciones). — https://www.msc-les.org/proceedings/emss/2016/EMSS2016_249.pdf · https://github.com/EdgarLopezPhD/PaySim (repositorio; dataset alojado en Kaggle). Consultado el 11/09/2026. — Respalda: P5, P11, P12 de la bitácora.\n[2] IEEE-CIS Fraud Detection — competencia de Kaggle, datos provistos por Vesta Corporation. 590,540 transacciones reales de comercio electrónico (“card-not-present”) de Estados Unidos, a lo largo de 6 meses, con 393 variables (monto, tipo de producto, variables de tarjeta/dirección anonimizadas, conteos C1–C14, deltas de tiempo D1–D15, variables de identidad/dispositivo, y variables de ingeniería propia de Vesta). Tasa de fraude real: 3.5% (20,663 casos). — https://www.kaggle.com/c/ieee-fraud-detection/data. Consultado el 11/09/2026. — Respalda: P12 de la bitácora (uso como validación con etiquetas reales)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#contexto-de-negocio-fraude-digital-en-fintech-y-latam",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#contexto-de-negocio-fraude-digital-en-fintech-y-latam",
+    "title": "Fuentes citadas",
+    "section": "Contexto de negocio: fraude digital en fintech y LatAm",
+    "text": "Contexto de negocio: fraude digital en fintech y LatAm\n[3] AppGate — informe “Fraud Beat 2026” sobre fraude digital en Latinoamérica; Revista E&N — “Fraude digital en la banca móvil registró crecimiento del 155% durante 2025”. El costo de cada transacción fraudulenta en instituciones financieras de LatAm equivale a 4.59 veces el valor de lo perdido (frente a 3.07 veces en el sector minorista); el 38% del fraude reciente se atribuye a métodos de pago nuevos y emergentes (pagos móviles, cripto); crecimiento interanual de fraude por ingeniería social del 155% en la banca digital de la región durante 2025–2026. — https://lanotaeconomica.com.co/movidas-empresarial/el-informe-fraud-beat-2026-de-appgate-revela-la-industrializacion-del-fraude-digital-en-latinoamerica/ · https://www.revistaeyn.com/finanzas/fraude-digital-en-la-banca-movil-registro-crecimiento-del-155-durante-2025-KB31303018. Consultado el 11/09/2026. — Respalda: P2, P6, P7 de la bitácora.\n[4] Reportes sobre fraude por ingeniería social y herramientas de acceso remoto (RAT) en LatAm. Los intentos de fraude mediante herramientas de acceso remoto crecieron 409% en 2025–2026 en la región; en algunos estudios, las redes sociales son la puerta de entrada del 86% de los fraudes digitales identificados. — https://www.cronista.com/mexico/finanzas-economia/las-redes-sociales-ya-son-la-puerta-de-entrada-para-el-86-de-los-fraudes-digitales-en-america-latina/ · https://www.innovaciondigital360.com/pago-electronico/el-fraude-financiero-digital-acecha-con-fuerza-en-2025-y-estas-son-las-principales-tendencias-en-latam/. Consultado el 11/09/2026. — Respalda: P2 de la bitácora (tipos de fraude que más preocupan)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#contexto-de-comercio-electrónico-y-contracargos-en-méxico",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#contexto-de-comercio-electrónico-y-contracargos-en-méxico",
+    "title": "Fuentes citadas",
+    "section": "Contexto de comercio electrónico y contracargos en México",
+    "text": "Contexto de comercio electrónico y contracargos en México\n[5] CONDUSEF — “La CONDUSEF informa sobre las compras en comercio electrónico, realizadas en el período enero-septiembre de 2022.” Comunicado oficial, gob.mx, 23 de enero de 2023. Fuente primaria (no una nota de prensa que la resume): de enero a septiembre de 2022 se registraron 610 millones de operaciones de comercio electrónico por 431,500 millones de pesos, de 960 millones de solicitudes de compra recibidas (tasa de autorización: 63.6%); de esas operaciones autorizadas, solo el 0.50% derivó en un contracargo o reclamación. En el mismo periodo, la CONDUSEF registró 72,193 casos de fraude, equivalentes al 49% de las reclamaciones bancarias totales — es decir, el fraude en medios de pago es, por volumen de quejas, el problema número uno que enfrenta la banca mexicana con sus usuarios. — https://www.gob.mx/condusef/prensa/la-condusef-informa-sobre-las-compras-en-comercio-electronico-realizadas-en-el-periodo-enero-septiembre-de-2022. Consultado el 11/09/2026. — Respalda: P6 de la bitácora (magnitud del fraude en México y su peso relativo frente a otras quejas bancarias)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#marco-regulatorio",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#marco-regulatorio",
+    "title": "Fuentes citadas",
+    "section": "Marco regulatorio",
+    "text": "Marco regulatorio\n[6] Ley para Regular las Instituciones de Tecnología Financiera (“Ley Fintech”), Diario Oficial de la Federación, 9 de marzo de 2018 (vigente desde el 10 de marzo de 2018; última reforma: 24 de enero de 2024). Regula a las Instituciones de Tecnología Financiera bajo supervisión de la Secretaría de Hacienda y Crédito Público, el Banco de México y la CNBV; exige controles para prevenir y reducir el riesgo de fraude y lavado de dinero, y el reporte de operaciones inusuales a la Unidad de Inteligencia Financiera (UIF). — https://www.cnbv.gob.mx/Normatividad/Ley%20para%20Regular%20las%20Instituciones%20de%20Tecnolog%C3%ADa%20Financiera.pdf. Consultado el 11/09/2026. — Respalda: P8 de la bitácora."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#glosario-de-términos-del-área-para-un-equipo-sin-experiencia-previa-en-fintech",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#glosario-de-términos-del-área-para-un-equipo-sin-experiencia-previa-en-fintech",
+    "title": "Fuentes citadas",
+    "section": "Glosario de términos del área (para un equipo sin experiencia previa en fintech)",
+    "text": "Glosario de términos del área (para un equipo sin experiencia previa en fintech)\n[7] Signifyd — “Glosario Antifraude” (México); ClearSale — “Glosario de términos: comercio electrónico y prevención del fraude”. Ambas son empresas reales de prevención de fraude que operan en Latinoamérica (ClearSale es de origen brasileño, con operación en México); sus glosarios públicos definen, en el lenguaje de la industria, términos como falso positivo, falso negativo, chargeback (contracargo) y score de riesgo, usados en la respuesta a P13 de la bitácora. — https://mx.signifyd.com/blog/glosario-antifraude-mx/ · https://es.clear.sale/recursos/glosario-de-terminos-del-fraude. Consultado el 11/09/2026. — Respalda: P13 de la bitácora (vocabulario básico del área: falso positivo, falso negativo, recall, precisión, chargeback, score de riesgo)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#otras-fuentes-de-apoyo",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#otras-fuentes-de-apoyo",
+    "title": "Fuentes citadas",
+    "section": "Otras fuentes de apoyo",
+    "text": "Otras fuentes de apoyo\n[8] Payment Media — “¿Cómo funciona un motor de reglas en el proceso de compra on-line?” (2 de septiembre de 2019); Konduto — “¿Qué es la revisión manual?” (centro de ayuda). Dos piezas complementarias de la misma práctica de industria. Payment Media describe un motor de reglas de autenticación basada en riesgo (RBA): clasifica cada transacción en rangos de riesgo — bajo (autenticación automática, sin fricción) o medio/alto (exige segundo factor: biometría, SMS, notificación push) — optimizado por analistas de operaciones. Konduto (empresa de prevención de fraude con operación en LatAm) define revisión manual de forma explícita: “un proceso en el que los agentes humanos verifican, una a una, las transacciones que han sido consideradas sospechosas por [el] antifraude”, donde el analista puede contactar al cliente o investigar por otras fuentes antes de aprobar o rechazar; cada decisión retroalimenta el modelo. Juntas, respaldan la existencia real de los dos extremos que describe el stakeholder: reglas con escalamiento automático, y revisión humana caso por caso para lo ambiguo. — https://www.paymentmedia.com/news-4497-cmo-funciona-un-motor-de-reglas-en-el-proceso-de-compra-on-line.html · https://ayuda.konduto.com/article/607-que-es-la-revision-manual. Consultado el 11/09/2026. — Respalda: P1, P3, P4, P9, P10, P11 de la bitácora."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#pendientes-reales-para-el-equipo",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#pendientes-reales-para-el-equipo",
+    "title": "Fuentes citadas",
+    "section": "Pendientes reales para el equipo",
+    "text": "Pendientes reales para el equipo\n\nVerificar que los enlaces de Kaggle ([1], [2]) sigan activos y que las condiciones de licencia (uso académico) se respeten en el reporte final.\nTodas las fechas de “consultado el” son de hoy (11/09/2026); actualizarlas si se vuelve a consultar después."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/fuentes/referencias.html#formato-usado-en-esta-versión",
+    "href": "entregas/E0_comprension_negocio/fuentes/referencias.html#formato-usado-en-esta-versión",
+    "title": "Fuentes citadas",
+    "section": "Formato usado en esta versión",
+    "text": "Formato usado en esta versión\n\n[n] Autor/Institución. Título. Año/fecha. URL. Consultado el DD/MM/AAAA. — Respalda: [pregunta(s) de la bitácora que sustenta]."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "",
+    "text": "El proyecto será exitoso si, sobre un conjunto de prueba temporal con fraude etiquetado, el sistema logra identificar con alta confianza al menos el 70% del monto total fraudulento —de modo que ese monto pueda bloquearse automáticamente sin intervención humana—, manteniendo una tasa de falsos positivos menor al 0.5% de las transacciones legítimas en ese nivel de alta confianza, y sin que el volumen enviado a revisión humana (nivel de confianza media) supere el 3% del total de transacciones.\n\nEs verificable porque cada término es medible con las etiquetas disponibles en los datos:\n\n\n\n\n\n\n\nTérmino del enunciado\nCómo se verifica\n\n\n\n\n“alta confianza”\nScore de anomalía calibrado por encima de un umbral A, fijado en la fase de modelado.\n\n\n“70% del monto fraudulento”\nSuma del monto de las transacciones fraudulentas correctamente marcadas en el nivel alto, dividida entre el monto fraudulento total del conjunto de prueba (recall ponderado por monto, no por conteo de transacciones).\n\n\n“falsos positivos &lt; 0.5%”\nProporción de transacciones legítimas del conjunto de prueba que caen, por error, en el nivel de alta confianza.\n\n\n“revisión humana ≤ 3%”\nProporción del volumen total de transacciones que cae en el nivel de confianza media.\n\n\n“conjunto de prueba temporal”\nPartición estrictamente posterior en el tiempo al conjunto de entrenamiento, sin mezclar transacciones de una misma cuenta entre train y test."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html#enunciado-en-el-lenguaje-del-stakeholder",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html#enunciado-en-el-lenguaje-del-stakeholder",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "",
+    "text": "El proyecto será exitoso si, sobre un conjunto de prueba temporal con fraude etiquetado, el sistema logra identificar con alta confianza al menos el 70% del monto total fraudulento —de modo que ese monto pueda bloquearse automáticamente sin intervención humana—, manteniendo una tasa de falsos positivos menor al 0.5% de las transacciones legítimas en ese nivel de alta confianza, y sin que el volumen enviado a revisión humana (nivel de confianza media) supere el 3% del total de transacciones.\n\nEs verificable porque cada término es medible con las etiquetas disponibles en los datos:\n\n\n\n\n\n\n\nTérmino del enunciado\nCómo se verifica\n\n\n\n\n“alta confianza”\nScore de anomalía calibrado por encima de un umbral A, fijado en la fase de modelado.\n\n\n“70% del monto fraudulento”\nSuma del monto de las transacciones fraudulentas correctamente marcadas en el nivel alto, dividida entre el monto fraudulento total del conjunto de prueba (recall ponderado por monto, no por conteo de transacciones).\n\n\n“falsos positivos &lt; 0.5%”\nProporción de transacciones legítimas del conjunto de prueba que caen, por error, en el nivel de alta confianza.\n\n\n“revisión humana ≤ 3%”\nProporción del volumen total de transacciones que cae en el nivel de confianza media.\n\n\n“conjunto de prueba temporal”\nPartición estrictamente posterior en el tiempo al conjunto de entrenamiento, sin mezclar transacciones de una misma cuenta entre train y test."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html#por-qué-monto-y-no-solo-conteo-de-transacciones",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html#por-qué-monto-y-no-solo-conteo-de-transacciones",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "Por qué “monto” y no solo “conteo de transacciones”",
+    "text": "Por qué “monto” y no solo “conteo de transacciones”\nEl stakeholder fue explícito: el costo de negocio es asimétrico y se mide en dinero, no en número de casos. Por eso el criterio pondera por monto: capturar muchas transacciones fraudulentas pequeñas importa menos que capturar pocas transacciones fraudulentas grandes. Esto también evita un efecto perverso del desbalance de clases: con fraude &lt;1% de los casos, optimizar por conteo puede maquillar un mal desempeño en los montos que realmente le cuestan dinero al negocio."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html#vínculo-con-las-métricas-técnicas",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html#vínculo-con-las-métricas-técnicas",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "Vínculo con las métricas técnicas",
+    "text": "Vínculo con las métricas técnicas\n\n\n\n\n\n\n\n\nObjetivo de negocio\nMétrica técnica\nUmbral propuesto\n\n\n\n\nAutomatizar el bloqueo de la mayoría del fraude\nRecall ponderado por monto en el nivel de alta confianza\n≥ 0.70\n\n\nNo dañar la experiencia de clientes legítimos\nPrecisión en el nivel de alta confianza\n≥ 0.995\n\n\nNo saturar al equipo de revisión humana\nProporción de transacciones en nivel de confianza media\n≤ 3% del volumen\n\n\nQue la “confianza” sea confiable y no solo un número\nError de calibración esperado (ECE) / Brier score\nPor debajo del umbral definido en fase 3, y mejor que un score sin calibrar\n\n\nAportar valor sobre lo que ya existe\nComparación contra la línea base de reglas fijas (umbral de monto/hora)\nMejora en recall ponderado y en precisión simultáneamente"
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html#línea-base-y-medición",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html#línea-base-y-medición",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "Línea base y medición",
+    "text": "Línea base y medición\n\nLínea base de negocio: hoy las reglas fijas bloquean o marcan sin diferenciar por cuenta ni dar un nivel de confianza continuo; la meta es mostrar una mejora medible respecto a ellas, no solo un modelo “que funciona en abstracto”.\nLínea base técnica: replicar en código las reglas fijas descritas por el stakeholder (umbral de monto, hora inusual, dispositivo nuevo) como comparación directa.\nPeriodo de medición: el último tramo temporal disponible de cada dataset, reservado como prueba; el resto se usa para entrenar el perfil de comportamiento por cuenta y calibrar la confianza."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/criterio_exito.html#qué-queda-fuera-del-criterio-de-éxito-de-e0",
+    "href": "entregas/E0_comprension_negocio/criterio_exito.html#qué-queda-fuera-del-criterio-de-éxito-de-e0",
+    "title": "Criterio de éxito en términos de negocio",
+    "section": "Qué queda fuera del criterio de éxito de E0",
+    "text": "Qué queda fuera del criterio de éxito de E0\n\nDesempeño garantizado sobre datos reales de una fintech LatAm (los datasets disponibles no lo son; ver riesgos y supuestos).\nExplicabilidad regulatoria completa frente a la CNBV/UIF (se documenta como requisito futuro, no como entregable de esta fase).\nUn sistema listo para producción: el alcance de E0–E5 es metodológico y de validación técnica."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/uso_ia.html",
+    "href": "entregas/E0_comprension_negocio/uso_ia.html",
+    "title": "Documentación de uso de herramientas de IA",
+    "section": "",
+    "text": "El equipo utilizó una herramienta de IA generativa (Claude, modelo Claude Sonnet 5, vía Claude Code) en dos interacciones, ambas dirigidas explícitamente por el equipo. En ambas se le dieron a la IA el rol, el formato y los límites exactos de la respuesta —no se le pidió que decidiera por nosotros— y cada salida se revisó antes de incorporarla."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/uso_ia.html#uso-1-generación-de-candidatas-para-las-preguntas-de-investigación",
+    "href": "entregas/E0_comprension_negocio/uso_ia.html#uso-1-generación-de-candidatas-para-las-preguntas-de-investigación",
+    "title": "Documentación de uso de herramientas de IA",
+    "section": "Uso 1 — Generación de candidatas para las preguntas de investigación",
+    "text": "Uso 1 — Generación de candidatas para las preguntas de investigación\n\n\n\n\n\n\n\nCampo\nDetalle\n\n\n\n\nHerramienta\nClaude Sonnet 5 (Claude Code)\n\n\nFecha\n11 de septiembre de 2026\n\n\nTarea\nProponer candidatas a preguntas de investigación para el tema de fraude fintech, alineadas con las tareas de minería que el equipo ya había esbozado (detección de anomalías por cuenta, clasificación supervisada, análisis costo-sensible).\n\n\nRol de la IA\nGenerador de opciones únicamente. No decidió cuál sería la pregunta central del proyecto.\n\n\nRol del equipo\nDefinió que la pregunta sobre anomalías por cuenta e incertidumbre (“cómo saber si es fraude y con qué seguridad lo decimos”) sería la pregunta central (P1), por encima de lo que la IA había propuesto como una candidata más entre varias.\n\n\n\nPrompt empleado\n\nGenera 4 a 6 candidatas a preguntas de investigación para un proyecto de detección de fraude en transacciones fintech, usando los datasets PaySim e IEEE-CIS. Cada una debe ligarse explícitamente a una tarea de minería de datos (clasificación, detección de anomalías, o análisis de costos). Formato: lista numerada, con una línea de justificación técnica por candidata. No las priorices ni elijas la mejor — esa decisión es nuestra.\n\nQué se hizo con la salida: el equipo tomó las candidatas, identificó que ninguna capturaba bien la idea de “comparar contra el historial propio de cada cuenta con un nivel de confianza” —que surgió de la reflexión del equipo, no de la IA— y la redactó como pregunta nueva, colocándola como P1 por encima de las generadas. Las demás candidatas se adaptaron y reordenaron como P2–P4 (ver preguntas.qmd)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/uso_ia.html#uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol",
+    "href": "entregas/E0_comprension_negocio/uso_ia.html#uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol",
+    "title": "Documentación de uso de herramientas de IA",
+    "section": "Uso 2 — IA como stakeholder simulado en el ejercicio de rol",
+    "text": "Uso 2 — IA como stakeholder simulado en el ejercicio de rol\n\n\n\nCampo\nDetalle\n\n\n\n\nHerramienta\nClaude Sonnet 5 (Claude Code)\n\n\nFecha\n11 de septiembre de 2026\n\n\nTarea\nRepresentar, en un ejercicio de rol, a un analista de prevención de fraude en una fintech de pagos digitales (perfil compuesto, no una empresa real), para la entrevista simulada que exige la entrega (ver bitácora).\n\n\nRol de la IA\nActuar el personaje y responder pregunta por pregunta, citando fuente o declarando explícitamente la falta de evidencia.\n\n\nRol del equipo\nEscribió el guion completo de 12 preguntas antes de la entrevista, las presentó una por una, aportó y validó las fuentes permitidas (reportes de fraude en LatAm y marco regulatorio mexicano), y descartó o reformuló toda respuesta sin sustento claro.\n\n\n\nPrompt de apertura\n\nVas a actuar como el stakeholder simulado de nuestra entrevista de Comprensión del Negocio: un analista de prevención de fraude en una fintech de pagos digitales que opera en México. Es un perfil compuesto, no representa a ninguna empresa real. Voy a hacerte, una por una, las preguntas de nuestro guion. Para cada respuesta: 1. Responde en primera persona, en 3 a 5 líneas, con el conocimiento y las restricciones reales de ese puesto. 2. Fundamenta cada afirmación ÚNICAMENTE en fuentes públicas verificables (reportes de industria, marco regulatorio) que yo te vaya pasando o que ya estén en nuestra lista de referencias. Si no hay fuente, dilo explícitamente (“no tengo evidencia pública para esto”) en vez de inventarlo. 3. No adelantes preguntas que no te he hecho ni completes el guion por tu cuenta.\nPrimera pregunta: [pregunta 1 del guion]\n\nPrompt repetido por cada pregunta del guion\n\nSiguiente pregunta del guion: “[texto exacto de la pregunta]”. Recuerda: solo con fuente verificable citada, o “no tengo evidencia pública para esto”.\n\nQué se hizo con la salida: por cada una de las 12 preguntas, el equipo contrastó la respuesta contra la fuente citada (lista en fuentes/referencias.qmd) antes de aceptarla; las respuestas sin sustento verificable se reformularon; y la sección de reflexión del equipo, al final de la bitácora, se escribió sin apoyo de IA."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/uso_ia.html#registro-de-revisión-del-equipo",
+    "href": "entregas/E0_comprension_negocio/uso_ia.html#registro-de-revisión-del-equipo",
+    "title": "Documentación de uso de herramientas de IA",
+    "section": "Registro de revisión del equipo",
+    "text": "Registro de revisión del equipo\n\n\n\nInteracción\nQuién validó / decidió\nCambios respecto a la salida de la IA\nFecha\n\n\n\n\nUso 1 — preguntas\nKristian\nSe descartaron las candidatas que no capturaban la idea de comparar cada transacción contra el historial de su propia cuenta; esa idea se redactó como P1 (pregunta central, no propuesta por la IA) y las demás candidatas se reordenaron como P2–P4.\n11 de septiembre de 2026\n\n\nUso 2 — stakeholder\nKristian\nSe contrastó cada respuesta contra su fuente citada antes de aceptarla; las respuestas sin fuente verificable se reformularon (ver correcciones documentadas en fuentes/referencias.qmd); la reflexión final de la bitácora se escribió sin apoyo de IA.\n11 de septiembre de 2026\n\n\n\n\nNota: por ahora esta revisión la hizo únicamente Kristian. Falta que el resto del equipo la confirme (o la corrija) antes de la verificación oral — cualquier integrante puede ser preguntado sobre esta página."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/uso_ia.html#si-no-hubo-más-usos-de-ia",
+    "href": "entregas/E0_comprension_negocio/uso_ia.html#si-no-hubo-más-usos-de-ia",
+    "title": "Documentación de uso de herramientas de IA",
+    "section": "Si no hubo más usos de IA",
+    "text": "Si no hubo más usos de IA\nSi estas fueron las únicas interacciones con IA en esta entrega, indíquenlo aquí de forma explícita, por ejemplo: “Fuera de las interacciones documentadas arriba, no se utilizaron herramientas de IA en esta entrega.” — y bórrese este párrafo de instrucción antes de entregar."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/canvas.html",
+    "href": "entregas/E0_comprension_negocio/canvas.html",
+    "title": "Business Understanding Canvas",
+    "section": "",
+    "text": "Note\n\n\n\nEste canvas está pensado para leerse de forma autónoma y caber en una página. Para la versión imprimible: Ctrl+P → guardar como PDF verificando que ocupe una sola hoja, o vaciar este contenido en la plantilla provista por el curso."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/canvas.html#coherencia-entre-bloques",
+    "href": "entregas/E0_comprension_negocio/canvas.html#coherencia-entre-bloques",
+    "title": "Business Understanding Canvas",
+    "section": "Coherencia entre bloques",
+    "text": "Coherencia entre bloques\n\n\n\n\n\n\n\nBloque de negocio (1–2)\nBloque técnico (4–5)\n\n\n\n\n“Detectar desviaciones del comportamiento habitual de cada cuenta”\nTarea A+B (perfil por cuenta + score de anomalía)\n\n\n“Decidir con qué confianza actuar”\nTarea C (calibración) con ECE bajo umbral\n\n\n“≥70% del monto fraudulento en alta confianza”\nRecall ponderado por monto ≥ 0.70 en ese nivel\n\n\n“Falsos positivos &lt;0.5% en alta confianza”\nPrecisión ≥ 99.5% en el nivel de alta confianza"
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html",
+    "href": "entregas/E0_comprension_negocio/preguntas.html",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "",
+    "text": "Cuatro preguntas, ordenadas por prioridad. La primera es la que el equipo decidió como eje central del proyecto: no basta con clasificar fraude/no-fraude, hay que saber con qué seguridad se afirma."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html#p1-prioridad-máxima-qué-transacciones-se-comportan-como-anómalas-respecto-al-patrón-histórico-de-cada-cuenta-más-allá-de-reglas-fijas-y-con-qué-nivel-de-confianza-podemos-afirmar-que-son-fraude",
+    "href": "entregas/E0_comprension_negocio/preguntas.html#p1-prioridad-máxima-qué-transacciones-se-comportan-como-anómalas-respecto-al-patrón-histórico-de-cada-cuenta-más-allá-de-reglas-fijas-y-con-qué-nivel-de-confianza-podemos-afirmar-que-son-fraude",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "P1 — (Prioridad máxima) ¿Qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza podemos afirmar que son fraude?",
+    "text": "P1 — (Prioridad máxima) ¿Qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza podemos afirmar que son fraude?\n\nEn una frase: cómo saber si es fraude o no, y con qué seguridad lo decimos.\nPor qué es el eje: la entrevista con el stakeholder mostró que el dolor no es la falta de un clasificador, sino que las reglas actuales tratan igual a todas las cuentas. El valor de negocio (automatizar el bloqueo sin sumar fricción) depende de tener un score de confianza, no solo una etiqueta.\nTarea de minería: modelado del comportamiento histórico por cuenta (PaySim) + detección de anomalías (isolation forest / local outlier factor / autoencoder) + calibración de la probabilidad de ese score (isotonic regression / Platt scaling; explorar conformal prediction para dar un intervalo de confianza en vez de un solo número).\nVariables candidatas: desviación del monto respecto al historial propio de la cuenta, frecuencia relativa de transacciones, novedad de la contraparte (nameDest), cambio de saldo relativo (oldbalanceOrg vs newbalanceOrig en PaySim), tiempo desde la última transacción.\nÉxito de la pregunta: en el nivel de alta confianza, recall ponderado por monto ≥ 0.70 y precisión ≥ 99.5%; error de calibración esperado (ECE) por debajo del umbral que se fije en fase 3."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html#p2-prioridad-alta-qué-combinación-de-variables-permite-separar-fraude-de-comportamiento-legítimo-con-etiquetas-reales-y-sirve-esto-para-validar-el-criterio-de-anomalía-de-p1",
+    "href": "entregas/E0_comprension_negocio/preguntas.html#p2-prioridad-alta-qué-combinación-de-variables-permite-separar-fraude-de-comportamiento-legítimo-con-etiquetas-reales-y-sirve-esto-para-validar-el-criterio-de-anomalía-de-p1",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "P2 — (Prioridad alta) ¿Qué combinación de variables permite separar fraude de comportamiento legítimo con etiquetas reales, y sirve esto para validar el criterio de anomalía de P1?",
+    "text": "P2 — (Prioridad alta) ¿Qué combinación de variables permite separar fraude de comportamiento legítimo con etiquetas reales, y sirve esto para validar el criterio de anomalía de P1?\n\nPor qué segundo: IEEE-CIS tiene etiquetas de fraude reales (no simuladas); sirve para comprobar si las señales de anomalía que encontremos en PaySim generalizan a datos reales, aunque de otro contexto (e-commerce de EE. UU., no fintech LatAm).\nTarea de minería: clasificación supervisada con manejo de desbalance (pesos de clase, submuestreo/sobremuestreo), evaluada con PR-AUC y recall, no con exactitud.\nVariables candidatas: monto de transacción, variables C1–C14 (conteos), D1–D15 (deltas de tiempo desde transacciones previas), variables de dispositivo y coincidencia de dirección.\nÉxito de la pregunta: PR-AUC del modelo supervisado por encima de una línea base ingenua (predecir siempre “no fraude”), y coherencia direccional con las variables que resultan importantes en el modelo de anomalías de P1."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html#p3-prioridad-media-dónde-conviene-fijar-los-umbrales-de-confianza-altomediobajo-para-minimizar-el-costo-esperado-del-negocio",
+    "href": "entregas/E0_comprension_negocio/preguntas.html#p3-prioridad-media-dónde-conviene-fijar-los-umbrales-de-confianza-altomediobajo-para-minimizar-el-costo-esperado-del-negocio",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "P3 — (Prioridad media) ¿Dónde conviene fijar los umbrales de confianza (alto/medio/bajo) para minimizar el costo esperado del negocio?",
+    "text": "P3 — (Prioridad media) ¿Dónde conviene fijar los umbrales de confianza (alto/medio/bajo) para minimizar el costo esperado del negocio?\n\nPor qué tercero: depende de tener ya un score calibrado (P1); es la traducción de ese score a una política de decisión operativa.\nTarea de minería: análisis de costo-sensibilidad sobre la curva precisión-recall, usando el costo asimétrico reportado por el stakeholder (un fraude no detectado cuesta ~4.59× el monto perdido frente al costo de un falso positivo).\nVariables candidatas: el score calibrado de P1, el monto de la transacción (para ponderar el costo real, no solo el conteo de casos).\nÉxito de la pregunta: una política de tres umbrales que cumpla el criterio de éxito de negocio (≥70% del monto en alta confianza, revisión humana ≤3% del volumen)."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html#p4-prioridad-media-qué-tan-estable-es-el-perfil-de-comportamiento-normal-de-una-cuenta-a-lo-largo-del-tiempo-y-cómo-se-degrada-el-modelo-cuando-ese-comportamiento-cambia-legítimamente-o-el-fraude-lo-imita",
+    "href": "entregas/E0_comprension_negocio/preguntas.html#p4-prioridad-media-qué-tan-estable-es-el-perfil-de-comportamiento-normal-de-una-cuenta-a-lo-largo-del-tiempo-y-cómo-se-degrada-el-modelo-cuando-ese-comportamiento-cambia-legítimamente-o-el-fraude-lo-imita",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "P4 — (Prioridad media) ¿Qué tan estable es el perfil de comportamiento “normal” de una cuenta a lo largo del tiempo, y cómo se degrada el modelo cuando ese comportamiento cambia legítimamente o el fraude lo imita?",
+    "text": "P4 — (Prioridad media) ¿Qué tan estable es el perfil de comportamiento “normal” de una cuenta a lo largo del tiempo, y cómo se degrada el modelo cuando ese comportamiento cambia legítimamente o el fraude lo imita?\n\nPor qué cuarto: es la pregunta de sostenibilidad del modelo en el tiempo; no bloquea el resto del proyecto pero es central para que el resultado sea creíble como propuesta operativa.\nTarea de minería: validación temporal (ventanas móviles), comparación del desempeño del modelo en distintos cortes de tiempo, detección de concept drift.\nVariables candidatas: desempeño (recall/precisión en alta confianza) por ventana temporal, tasa de cuentas “nuevas” sin historial suficiente.\nÉxito de la pregunta: cuantificar cada cuánto tiempo sería necesario reentrenar o actualizar el perfil de cada cuenta para mantener el desempeño dentro del criterio de éxito."
+  },
+  {
+    "objectID": "entregas/E0_comprension_negocio/preguntas.html#trazabilidad",
+    "href": "entregas/E0_comprension_negocio/preguntas.html#trazabilidad",
+    "title": "Preguntas de investigación priorizadas",
+    "section": "Trazabilidad",
+    "text": "Trazabilidad\n\n\n\n\n\n\n\n\n\nPregunta\nTarea de minería\nBloque del Canvas\nContribución al objetivo de negocio\n\n\n\n\nP1\nAnomalías por cuenta + calibración de confianza\n4-A/B/C · 5\nScore de confianza para decidir bloqueo/revisión/paso\n\n\nP2\nClasificación supervisada (validación cruzada)\n4-C (validación) · 5\nConfirmar que las señales de anomalía generalizan\n\n\nP3\nAnálisis costo-sensible\n2 · 5\nPolítica operativa de tres niveles\n\n\nP4\nValidación temporal / concept drift\n3 (riesgos) · 6\nSostenibilidad del modelo en producción"
+  }
+]

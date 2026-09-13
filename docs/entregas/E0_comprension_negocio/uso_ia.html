@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Documentación de uso de herramientas de IA – Proyecto Integrador · Minería de Datos</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-126bebf5b73f0e50076e928fed77ba85.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Proyecto Integrador · Minería de Datos</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-e0-·-comprensión-del-negocio" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">E0 · Comprensión del Negocio</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-e0-·-comprensión-del-negocio">    
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/index.html">
+ <span class="dropdown-text">Resumen de E0</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/bitacora.html">
+ <span class="dropdown-text">Bitácora del stakeholder</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/canvas.html">
+ <span class="dropdown-text">Business Understanding Canvas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/preguntas.html">
+ <span class="dropdown-text">Preguntas de investigación</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/criterio_exito.html">
+ <span class="dropdown-text">Criterio de éxito</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/riesgos_supuestos.html">
+ <span class="dropdown-text">Riesgos y supuestos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/uso_ia.html">
+ <span class="dropdown-text">Uso de IA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../entregas/E0_comprension_negocio/fuentes/referencias.html">
+ <span class="dropdown-text">Fuentes citadas</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#uso-1-generación-de-candidatas-para-las-preguntas-de-investigación" id="toc-uso-1-generación-de-candidatas-para-las-preguntas-de-investigación" class="nav-link active" data-scroll-target="#uso-1-generación-de-candidatas-para-las-preguntas-de-investigación">Uso 1 — Generación de candidatas para las preguntas de investigación</a></li>
+  <li><a href="#uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol" id="toc-uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol" class="nav-link" data-scroll-target="#uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol">Uso 2 — IA como stakeholder simulado en el ejercicio de rol</a></li>
+  <li><a href="#registro-de-revisión-del-equipo" id="toc-registro-de-revisión-del-equipo" class="nav-link" data-scroll-target="#registro-de-revisión-del-equipo">Registro de revisión del equipo</a></li>
+  <li><a href="#si-no-hubo-más-usos-de-ia" id="toc-si-no-hubo-más-usos-de-ia" class="nav-link" data-scroll-target="#si-no-hubo-más-usos-de-ia">Si no hubo más usos de IA</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Documentación de uso de herramientas de IA</h1>
+<p class="subtitle lead">E0 · Comprensión del Negocio</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>El equipo utilizó una herramienta de IA generativa (<strong>Claude</strong>, modelo <strong>Claude Sonnet 5</strong>, vía <strong>Claude Code</strong>) en dos interacciones, ambas dirigidas explícitamente por el equipo. En ambas se le dieron a la IA el rol, el formato y los límites exactos de la respuesta —no se le pidió que decidiera por nosotros— y cada salida se revisó antes de incorporarla.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Esta página documenta las interacciones que el equipo condujo de forma dirigida: la generación de candidatas para las preguntas de investigación, y la entrevista simulada. <strong>Antes de entregar:</strong> si además se usó IA para cualquier otra cosa (redactar u organizar otras secciones, armar la estructura del sitio, etc.), agréguenlo aquí también. Omitir un uso real es justo lo que penaliza la rúbrica (“uso de IA no documentado”); declarar un uso acotado y bien dirigido, como el de esta página, no se penaliza.</p>
+</div>
+</div>
+<section id="uso-1-generación-de-candidatas-para-las-preguntas-de-investigación" class="level2">
+<h2 class="anchored" data-anchor-id="uso-1-generación-de-candidatas-para-las-preguntas-de-investigación">Uso 1 — Generación de candidatas para las preguntas de investigación</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Herramienta</td>
+<td>Claude Sonnet 5 (Claude Code)</td>
+</tr>
+<tr class="even">
+<td>Fecha</td>
+<td>11 de septiembre de 2026</td>
+</tr>
+<tr class="odd">
+<td>Tarea</td>
+<td>Proponer candidatas a preguntas de investigación para el tema de fraude fintech, alineadas con las tareas de minería que el equipo ya había esbozado (detección de anomalías por cuenta, clasificación supervisada, análisis costo-sensible).</td>
+</tr>
+<tr class="even">
+<td>Rol de la IA</td>
+<td>Generador de opciones únicamente. No decidió cuál sería la pregunta central del proyecto.</td>
+</tr>
+<tr class="odd">
+<td>Rol del equipo</td>
+<td>Definió que la pregunta sobre anomalías por cuenta e incertidumbre (“cómo saber si es fraude y con qué seguridad lo decimos”) sería la <strong>pregunta central (P1)</strong>, por encima de lo que la IA había propuesto como una candidata más entre varias.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prompt empleado</strong></p>
+<blockquote class="blockquote">
+<p>Genera 4 a 6 candidatas a preguntas de investigación para un proyecto de detección de fraude en transacciones fintech, usando los datasets PaySim e IEEE-CIS. Cada una debe ligarse explícitamente a una tarea de minería de datos (clasificación, detección de anomalías, o análisis de costos). Formato: lista numerada, con una línea de justificación técnica por candidata. No las priorices ni elijas la mejor — esa decisión es nuestra.</p>
+</blockquote>
+<p><strong>Qué se hizo con la salida:</strong> el equipo tomó las candidatas, identificó que ninguna capturaba bien la idea de “comparar contra el historial propio de cada cuenta con un nivel de confianza” —que surgió de la reflexión del equipo, no de la IA— y la redactó como pregunta nueva, colocándola como P1 por encima de las generadas. Las demás candidatas se adaptaron y reordenaron como P2–P4 (ver <a href="../../entregas/E0_comprension_negocio/preguntas.html">preguntas.qmd</a>).</p>
+</section>
+<section id="uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol" class="level2">
+<h2 class="anchored" data-anchor-id="uso-2-ia-como-stakeholder-simulado-en-el-ejercicio-de-rol">Uso 2 — IA como stakeholder simulado en el ejercicio de rol</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Campo</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Herramienta</td>
+<td>Claude Sonnet 5 (Claude Code)</td>
+</tr>
+<tr class="even">
+<td>Fecha</td>
+<td>11 de septiembre de 2026</td>
+</tr>
+<tr class="odd">
+<td>Tarea</td>
+<td>Representar, en un ejercicio de rol, a un analista de prevención de fraude en una fintech de pagos digitales (perfil compuesto, no una empresa real), para la entrevista simulada que exige la entrega (ver <a href="../../entregas/E0_comprension_negocio/bitacora.html">bitácora</a>).</td>
+</tr>
+<tr class="even">
+<td>Rol de la IA</td>
+<td>Actuar el personaje y responder pregunta por pregunta, citando fuente o declarando explícitamente la falta de evidencia.</td>
+</tr>
+<tr class="odd">
+<td>Rol del equipo</td>
+<td>Escribió el guion completo de 12 preguntas antes de la entrevista, las presentó una por una, aportó y validó las fuentes permitidas (reportes de fraude en LatAm y marco regulatorio mexicano), y descartó o reformuló toda respuesta sin sustento claro.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Prompt de apertura</strong></p>
+<blockquote class="blockquote">
+<p>Vas a actuar como el stakeholder simulado de nuestra entrevista de Comprensión del Negocio: un analista de prevención de fraude en una fintech de pagos digitales que opera en México. Es un perfil compuesto, no representa a ninguna empresa real. Voy a hacerte, una por una, las preguntas de nuestro guion. Para cada respuesta: 1. Responde en primera persona, en 3 a 5 líneas, con el conocimiento y las restricciones reales de ese puesto. 2. Fundamenta cada afirmación ÚNICAMENTE en fuentes públicas verificables (reportes de industria, marco regulatorio) que yo te vaya pasando o que ya estén en nuestra lista de referencias. Si no hay fuente, dilo explícitamente (“no tengo evidencia pública para esto”) en vez de inventarlo. 3. No adelantes preguntas que no te he hecho ni completes el guion por tu cuenta.</p>
+<p>Primera pregunta: [pregunta 1 del guion]</p>
+</blockquote>
+<p><strong>Prompt repetido por cada pregunta del guion</strong></p>
+<blockquote class="blockquote">
+<p>Siguiente pregunta del guion: “[texto exacto de la pregunta]”. Recuerda: solo con fuente verificable citada, o “no tengo evidencia pública para esto”.</p>
+</blockquote>
+<p><strong>Qué se hizo con la salida:</strong> por cada una de las 12 preguntas, el equipo contrastó la respuesta contra la fuente citada (lista en <a href="../../entregas/E0_comprension_negocio/fuentes/referencias.html">fuentes/referencias.qmd</a>) antes de aceptarla; las respuestas sin sustento verificable se reformularon; y la sección de <strong>reflexión del equipo</strong>, al final de la bitácora, se escribió sin apoyo de IA.</p>
+</section>
+<section id="registro-de-revisión-del-equipo" class="level2">
+<h2 class="anchored" data-anchor-id="registro-de-revisión-del-equipo">Registro de revisión del equipo</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Interacción</th>
+<th>Quién validó / decidió</th>
+<th>Cambios respecto a la salida de la IA</th>
+<th>Fecha</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Uso 1 — preguntas</td>
+<td>Kristian</td>
+<td>Se descartaron las candidatas que no capturaban la idea de comparar cada transacción contra el historial de su propia cuenta; esa idea se redactó como P1 (pregunta central, no propuesta por la IA) y las demás candidatas se reordenaron como P2–P4.</td>
+<td>11 de septiembre de 2026</td>
+</tr>
+<tr class="even">
+<td>Uso 2 — stakeholder</td>
+<td>Kristian</td>
+<td>Se contrastó cada respuesta contra su fuente citada antes de aceptarla; las respuestas sin fuente verificable se reformularon (ver correcciones documentadas en <a href="../../entregas/E0_comprension_negocio/fuentes/referencias.html">fuentes/referencias.qmd</a>); la reflexión final de la bitácora se escribió sin apoyo de IA.</td>
+<td>11 de septiembre de 2026</td>
+</tr>
+</tbody>
+</table>
+<blockquote class="blockquote">
+<p><strong>Nota:</strong> por ahora esta revisión la hizo únicamente Kristian. Falta que el resto del equipo la confirme (o la corrija) antes de la verificación oral — cualquier integrante puede ser preguntado sobre esta página.</p>
+</blockquote>
+</section>
+<section id="si-no-hubo-más-usos-de-ia" class="level2">
+<h2 class="anchored" data-anchor-id="si-no-hubo-más-usos-de-ia">Si no hubo más usos de IA</h2>
+<p>Si estas fueron las únicas interacciones con IA en esta entrega, indíquenlo aquí de forma explícita, por ejemplo: <em>“Fuera de las interacciones documentadas arriba, no se utilizaron herramientas de IA en esta entrega.”</em> — y bórrese este párrafo de instrucción antes de entregar.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Vega Navas · Cimmino Yáñez · Benítez Pérez · Herrera Cuamatla — Facultad de Ciencias, UNAM</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Almacenes y Minería de Datos · 2026-2</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
