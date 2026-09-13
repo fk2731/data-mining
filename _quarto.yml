@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Proyecto Integrador · Minería de Datos"
+  description: >-
+    Detección de fraude y estimación de confianza en transacciones fintech.
+  reader-mode: true
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Inicio
+      - text: "E0 · Comprensión del Negocio"
+        menu:
+          - href: entregas/E0_comprension_negocio/index.qmd
+            text: Resumen de E0
+          - href: entregas/E0_comprension_negocio/bitacora.qmd
+            text: Bitácora del stakeholder
+          - href: entregas/E0_comprension_negocio/canvas.qmd
+            text: Business Understanding Canvas
+          - href: entregas/E0_comprension_negocio/preguntas.qmd
+            text: Preguntas de investigación
+          - href: entregas/E0_comprension_negocio/criterio_exito.qmd
+            text: Criterio de éxito
+          - href: entregas/E0_comprension_negocio/riesgos_supuestos.qmd
+            text: Riesgos y supuestos
+          - href: entregas/E0_comprension_negocio/uso_ia.qmd
+            text: Uso de IA
+          - href: entregas/E0_comprension_negocio/fuentes/referencias.qmd
+            text: Fuentes citadas
+  page-footer:
+    left: "Vega Navas · Cimmino Yáñez · Benítez Pérez · Herrera Cuamatla — Facultad de Ciencias, UNAM"
+    right: "Almacenes y Minería de Datos · 2026-2"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    code-copy: true
+    link-external-newwindow: true
