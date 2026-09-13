@@ -1,0 +1,61 @@
+---
+title: "Proyecto Integrador · Minería de Datos"
+subtitle: "Detección de fraude y estimación de confianza en transacciones fintech"
+---
+
+## De qué trata el proyecto
+
+Una fintech de pagos digitales que opera en México/LatAm necesita **reducir sus pérdidas por
+fraude** sin dañar la experiencia de las personas usuarias legítimas. El eje del proyecto no es solo
+"clasificar fraude sí/no": es **detectar cuándo una transacción se aparta del comportamiento habitual
+de esa cuenta específica** —más allá de reglas fijas de monto u horario— y hacerlo con un **nivel de
+confianza explícito** que permita decidir automáticamente entre bloquear, mandar a revisión humana o
+dejar pasar la operación.
+
+> Pregunta guía del proyecto: **¿cómo sabemos si una transacción es fraude, y con qué seguridad lo
+> decimos?**
+
+El proyecto sigue la metodología **CRISP-DM** y se entrega por fases.
+
+## Estado por fase (CRISP-DM)
+
+| # | Fase | Estado |
+|---|------|--------|
+| 1 | Comprensión del negocio | **En curso — Entrega E0** |
+| 2 | Comprensión de los datos | Pendiente |
+| 3 | Preparación de los datos | Pendiente |
+| 4 | Modelado | Pendiente |
+| 5 | Evaluación | Pendiente |
+| 6 | Despliegue | Reporte y presentación final |
+
+## Entrega actual
+
+### [E0 · Comprensión del Negocio](entregas/E0_comprension_negocio/index.qmd)
+
+- [Bitácora de la reunión con el stakeholder](entregas/E0_comprension_negocio/bitacora.qmd)
+- [Business Understanding Canvas](entregas/E0_comprension_negocio/canvas.qmd)
+- [Preguntas de investigación priorizadas](entregas/E0_comprension_negocio/preguntas.qmd)
+- [Criterio de éxito en términos de negocio](entregas/E0_comprension_negocio/criterio_exito.qmd)
+- [Supuestos y riesgos](entregas/E0_comprension_negocio/riesgos_supuestos.qmd)
+- [Documentación de uso de herramientas de IA](entregas/E0_comprension_negocio/uso_ia.qmd)
+- [Fuentes citadas](entregas/E0_comprension_negocio/fuentes/referencias.qmd)
+
+## Fuentes de datos previstas
+
+| Fuente | Contenido | Por qué se usa |
+|---|---|---|
+| **PaySim** (Kaggle / Lopez-Rojas et al., 2016) | ~6.3M transacciones simuladas de dinero móvil, 744 pasos (30 días), con cuentas identificadas (`nameOrig`, `nameDest`) y su saldo antes/después de cada operación. Fraude: 0.13% de los casos. | Es el único de los dos con **estructura temporal por cuenta**: permite construir el perfil de comportamiento histórico que exige la pregunta central del proyecto. |
+| **IEEE-CIS Fraud Detection** (Kaggle / Vesta Corporation) | 590,540 transacciones de e-commerce (EE. UU.), 6 meses, 393 variables, fraude real etiquetado: 3.5% de los casos. | Datos **reales** (no sintéticos) con etiqueta de fraude confiable: sirve para validar si las señales de anomalía encontradas en PaySim generalizan, y como referencia de clasificación supervisada. |
+| Reportes de industria sobre fraude digital en LatAm (AppGate, Stripe, Condusef-Banxico) | Estadísticas de crecimiento del fraude, costo por transacción fraudulenta, tasas de contracargo en México | Sustentan el objetivo de negocio y las respuestas del stakeholder simulado — no son datos de modelado. |
+| Marco regulatorio (Ley Fintech, CNBV) | Obligaciones de prevención de fraude y reporte a la UIF | Restricciones/requisitos de la Sección 3 del Canvas. |
+
+> **Nota de honestidad metodológica:** ninguno de los dos datasets de modelado proviene de una fintech
+> latinoamericana real. Este proyecto desarrolla y valida una **metodología transferible** de
+> detección de anomalías por cuenta con estimación de confianza; no es un diagnóstico del fraude en
+> una empresa real. El detalle está en [riesgos y supuestos](entregas/E0_comprension_negocio/riesgos_supuestos.qmd).
+
+## Equipo
+
+Vega Navas Saúl · Cimmino Yáñez Nicholas Joseph · Benítez Pérez Kristian Leonel · Herrera Cuamatla
+Jennifer Jade — Facultad de Ciencias, UNAM. Números de cuenta en el
+[README](https://github.com/fk2731/data-mining#integrantes) del repositorio.
