@@ -1,0 +1,59 @@
+---
+title: "Criterio de éxito en términos de negocio"
+subtitle: "E0 · Comprensión del Negocio"
+---
+
+## Enunciado (en el lenguaje del stakeholder)
+
+> **El proyecto será exitoso si, sobre un conjunto de prueba temporal con fraude etiquetado, el
+> sistema logra identificar con alta confianza al menos el 70% del monto total fraudulento —de modo
+> que ese monto pueda bloquearse automáticamente sin intervención humana—, manteniendo una tasa de
+> falsos positivos menor al 0.5% de las transacciones legítimas en ese nivel de alta confianza, y sin
+> que el volumen enviado a revisión humana (nivel de confianza media) supere el 3% del total de
+> transacciones.**
+
+Es verificable porque cada término es medible con las etiquetas disponibles en los datos:
+
+| Término del enunciado | Cómo se verifica |
+|---|---|
+| "alta confianza" | Score de anomalía calibrado por encima de un umbral `A`, fijado en la fase de modelado. |
+| "70% del monto fraudulento" | Suma del monto de las transacciones fraudulentas correctamente marcadas en el nivel alto, dividida entre el monto fraudulento total del conjunto de prueba (**recall ponderado por monto**, no por conteo de transacciones). |
+| "falsos positivos &lt; 0.5%" | Proporción de transacciones legítimas del conjunto de prueba que caen, por error, en el nivel de alta confianza. |
+| "revisión humana ≤ 3%" | Proporción del volumen total de transacciones que cae en el nivel de confianza media. |
+| "conjunto de prueba temporal" | Partición estrictamente posterior en el tiempo al conjunto de entrenamiento, sin mezclar transacciones de una misma cuenta entre train y test. |
+
+## Por qué "monto" y no solo "conteo de transacciones"
+
+El stakeholder fue explícito: el costo de negocio es asimétrico y se mide en dinero, no en número de
+casos. Por eso el criterio pondera por monto: capturar muchas transacciones fraudulentas pequeñas
+importa menos que capturar pocas transacciones fraudulentas grandes. Esto también evita un efecto
+perverso del desbalance de clases: con fraude <1% de los casos, optimizar por conteo puede maquillar
+un mal desempeño en los montos que realmente le cuestan dinero al negocio.
+
+## Vínculo con las métricas técnicas
+
+| Objetivo de negocio | Métrica técnica | Umbral propuesto |
+|---|---|---|
+| Automatizar el bloqueo de la mayoría del fraude | **Recall ponderado por monto** en el nivel de alta confianza | ≥ 0.70 |
+| No dañar la experiencia de clientes legítimos | **Precisión** en el nivel de alta confianza | ≥ 0.995 |
+| No saturar al equipo de revisión humana | Proporción de transacciones en nivel de **confianza media** | ≤ 3% del volumen |
+| Que la "confianza" sea confiable y no solo un número | **Error de calibración esperado (ECE)** / Brier score | Por debajo del umbral definido en fase 3, y mejor que un score sin calibrar |
+| Aportar valor sobre lo que ya existe | Comparación contra la **línea base de reglas fijas** (umbral de monto/hora) | Mejora en recall ponderado y en precisión simultáneamente |
+
+## Línea base y medición
+
+- **Línea base de negocio:** hoy las reglas fijas bloquean o marcan sin diferenciar por cuenta ni dar
+  un nivel de confianza continuo; la meta es mostrar una mejora medible respecto a ellas, no solo un
+  modelo "que funciona en abstracto".
+- **Línea base técnica:** replicar en código las reglas fijas descritas por el stakeholder (umbral de
+  monto, hora inusual, dispositivo nuevo) como comparación directa.
+- **Periodo de medición:** el último tramo temporal disponible de cada dataset, reservado como prueba;
+  el resto se usa para entrenar el perfil de comportamiento por cuenta y calibrar la confianza.
+
+## Qué queda fuera del criterio de éxito de E0
+
+- Desempeño garantizado sobre datos reales de una fintech LatAm (los datasets disponibles no lo son;
+  ver [riesgos y supuestos](riesgos_supuestos.qmd)).
+- Explicabilidad regulatoria completa frente a la CNBV/UIF (se documenta como requisito futuro, no
+  como entregable de esta fase).
+- Un sistema listo para producción: el alcance de E0–E5 es metodológico y de validación técnica.
