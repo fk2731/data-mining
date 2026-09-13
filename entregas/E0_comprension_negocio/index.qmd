@@ -1,0 +1,40 @@
+---
+title: "E0 · Comprensión del Negocio"
+subtitle: "Business Understanding — Detección de fraude en transacciones fintech"
+---
+
+## Qué cubre esta entrega
+
+E0 corresponde a la **fase 1 de CRISP-DM**. Antes de tocar datos o código, el equipo valida que el
+problema elegido es **real, relevante y medible**, y lo traduce en:
+
+1. un **objetivo de negocio** (en el lenguaje del dominio),
+2. un **objetivo de minería de datos** (la tarea técnica), y
+3. un **criterio de éxito verificable** expresado en términos de negocio.
+
+## Decisiones de alcance tomadas por el equipo
+
+| Decisión | Elección | Motivo |
+|---|---|---|
+| Tema | **Fraude en reembolsos/transacciones fintech** | Buen ajuste con el perfil técnico del equipo (Ciencia de la Computación): clasificación desbalanceada, detección de anomalías y estimación de confianza dan margen para justificar decisiones técnicas a futuro. |
+| Stakeholder | **Simulado, perfil compuesto** — analista de prevención de fraude en una fintech de pagos digitales que opera en México | No se representa a ninguna empresa real; se sustenta con reportes públicos de la industria del fraude en LatAm y con el marco regulatorio mexicano (Ley Fintech, CNBV). |
+| Datos | **PaySim** (estructura temporal por cuenta) + **IEEE-CIS Fraud Detection** (etiquetas reales, validación cruzada) | Ninguno es de una fintech LatAm real; se documenta como limitación explícita, no se oculta. |
+| Pregunta central del proyecto | **¿Qué transacciones se comportan como anómalas respecto al patrón histórico de cada cuenta, más allá de reglas fijas, y con qué nivel de confianza lo afirmamos?** | Decisión explícita del equipo: el valor no está solo en clasificar fraude/no-fraude, sino en modelar el comportamiento *por cuenta* y cuantificar qué tan seguros estamos del veredicto. |
+
+## Entregables
+
+| # | Entregable | Página |
+|---|---|---|
+| 1 | Bitácora de la reunión con el stakeholder | [bitacora.qmd](bitacora.qmd) |
+| 2 | Business Understanding Canvas (1 página) | [canvas.qmd](canvas.qmd) |
+| 3 | Preguntas de investigación priorizadas | [preguntas.qmd](preguntas.qmd) |
+| 4 | Criterio de éxito en términos de negocio | [criterio_exito.qmd](criterio_exito.qmd) |
+| 5 | Supuestos y riesgos | [riesgos_supuestos.qmd](riesgos_supuestos.qmd) |
+| — | Documentación de uso de IA | [uso_ia.qmd](uso_ia.qmd) |
+| — | Fuentes citadas | [fuentes/referencias.qmd](fuentes/referencias.qmd) |
+
+## Síntesis de una línea
+
+> Detectar, para cada cuenta, cuándo una transacción se aparta de su propio comportamiento habitual
+> —no de una regla genérica— y decir con qué confianza se afirma que es fraude, para poder bloquear
+> automáticamente lo que es casi seguro, mandar a revisión lo dudoso, y no friccionar al resto.
