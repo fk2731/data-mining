@@ -3,12 +3,6 @@ title: "Business Understanding Canvas"
 subtitle: "E0 · CRISP-DM — Detección de fraude en transacciones fintech"
 ---
 
-::: {.callout-note}
-Este canvas está pensado para leerse de forma autónoma y caber en **una página**. Para la versión
-imprimible: `Ctrl+P` → guardar como PDF verificando que ocupe una sola hoja, o vaciar este contenido
-en la plantilla provista por el curso.
-:::
-
 ```{=html}
 <style>
 .canvas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:1rem}
@@ -142,7 +136,7 @@ en la plantilla provista por el curso.
 </div>
 ```
 
-## Coherencia entre bloques
+## Comprensión de negocio desde apartado técnico
 
 | Bloque de negocio (1–2) | Bloque técnico (4–5) |
 |---|---|
