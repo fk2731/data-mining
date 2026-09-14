@@ -8,15 +8,6 @@ El equipo utilizó una herramienta de IA generativa (**Claude**, modelo **Claude
 dieron a la IA el rol, el formato y los límites exactos de la respuesta —no se le pidió que decidiera
 por nosotros— y cada salida se revisó antes de incorporarla.
 
-::: {.callout-note}
-Esta página documenta las interacciones que el equipo condujo de forma dirigida: la generación de
-candidatas para las preguntas de investigación, y la entrevista simulada. **Antes de entregar:** si
-además se usó IA para cualquier otra cosa (redactar u organizar otras secciones, armar la estructura
-del sitio, etc.), agréguenlo aquí también. Omitir un uso real es justo lo que penaliza la rúbrica
-("uso de IA no documentado"); declarar un uso acotado y bien dirigido, como el de esta página, no se
-penaliza.
-:::
-
 ## Uso 1 — Generación de candidatas para las preguntas de investigación
 
 | Campo | Detalle |
@@ -82,13 +73,3 @@ equipo**, al final de la bitácora, se escribió sin apoyo de IA.
 |---|---|---|---|
 | Uso 1 — preguntas | Kristian | Se descartaron las candidatas que no capturaban la idea de comparar cada transacción contra el historial de su propia cuenta; esa idea se redactó como P1 (pregunta central, no propuesta por la IA) y las demás candidatas se reordenaron como P2–P4. | 11 de septiembre de 2026 |
 | Uso 2 — stakeholder | Kristian | Se contrastó cada respuesta contra su fuente citada antes de aceptarla; las respuestas sin fuente verificable se reformularon (ver correcciones documentadas en [fuentes/referencias.qmd](fuentes/referencias.qmd)); la reflexión final de la bitácora se escribió sin apoyo de IA. | 11 de septiembre de 2026 |
-
-> **Nota:** por ahora esta revisión la hizo únicamente Kristian. Falta que el resto del equipo la
-> confirme (o la corrija) antes de la verificación oral — cualquier integrante puede ser preguntado
-> sobre esta página.
-
-## Si no hubo más usos de IA
-
-Si estas fueron las únicas interacciones con IA en esta entrega, indíquenlo aquí de forma explícita,
-por ejemplo: *"Fuera de las interacciones documentadas arriba, no se utilizaron herramientas de IA en
-esta entrega."* — y bórrese este párrafo de instrucción antes de entregar.
