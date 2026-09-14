@@ -26,12 +26,6 @@ con la notación `[n]` y listadas en [Fuentes citadas](fuentes/referencias.qmd).
 dirigió este ejercicio está registrado en [Uso de IA — Uso 2](uso_ia.qmd). No se incluyen
 afirmaciones sin sustento documental.
 
-::: {.callout-warning}
-## Pendiente del equipo antes de entregar
-Verificar cada cita `[n]` contra la fuente original, y asegurarse de que **todos** los integrantes
-del equipo conozcan a fondo el contenido de esta entrega antes de la verificación oral: cualquiera
-puede ser preguntado y una respuesta insuficiente anula la entrega de todo el equipo.
-:::
 
 ## 2. Guion de preguntas y respuestas
 
