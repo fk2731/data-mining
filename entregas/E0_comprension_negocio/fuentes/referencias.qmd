@@ -3,15 +3,6 @@ title: "Fuentes citadas"
 subtitle: "E0 · Comprensión del Negocio — sustento del stakeholder simulado"
 ---
 
-::: {.callout-important}
-El stakeholder de E0 es **simulado y de perfil compuesto** (no representa a una empresa real). Cada
-respuesta de la [bitácora](../bitacora.qmd) se apoya en una de las fuentes de esta lista mediante la
-marca `[n]`, **numeradas en el orden en que aparecen en este documento** (no en el orden en que se
-citan en la bitácora, ni heredadas de una versión anterior sobre otro tema). Todas se verificaron
-mediante búsqueda web el **11 de septiembre de 2026**; se recomienda volver a abrir cada enlace antes
-de la entrega final.
-:::
-
 ## Datos de modelado
 
 **[1] PaySim — Lopez-Rojas, E. A.; Elmir, A.; Axelsson, S. "PaySim: A financial mobile money
