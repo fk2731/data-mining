@@ -15,6 +15,8 @@ __pycache__/
 .venv/
 env/
 
-# NO ignorar docs/: GitHub Pages sirve el sitio compilado desde esa carpeta.
+# El sitio ahora lo compila y despliega el workflow de GitHub Actions
+# (.github/workflows/publish.yml); ya no se comitea el resultado.
+/docs/
 
 **/*.quarto_ipynb
