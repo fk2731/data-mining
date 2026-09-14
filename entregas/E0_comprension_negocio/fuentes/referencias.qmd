@@ -114,13 +114,6 @@ caso por caso para lo ambiguo. —
 <https://ayuda.konduto.com/article/607-que-es-la-revision-manual>. Consultado el 11/09/2026. —
 *Respalda:* P1, P3, P4, P9, P10, P11 de la bitácora.
 
-## Pendientes reales para el equipo
-
-- Verificar que los enlaces de Kaggle ([1], [2]) sigan activos y que las condiciones de licencia (uso
-  académico) se respeten en el reporte final.
-- Todas las fechas de "consultado el" son de hoy (11/09/2026); actualizarlas si se vuelve a consultar
-  después.
-
 ## Formato usado en esta versión
 
 > **[n]** Autor/Institución. *Título.* Año/fecha. URL. Consultado el DD/MM/AAAA. — *Respalda:*
