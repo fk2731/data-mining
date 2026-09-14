@@ -41,6 +41,6 @@ de **Comprensión del Negocio (E0)**.
 | Vega Navas Saúl | 322088267 |
 | Cimmino Yáñez Nicholas Joseph | [pendiente] |
 | Benítez Pérez Kristian Leonel | 322011346 |
-| Herrera Cuamatla Jennifer Jade | [pendiente] |
+| Herrera Cuamatla Jennifer Jade | 322255481 |
 
 > Todos los integrantes deben poder explicar cualquier parte de la entrega (verificación oral en clase).
