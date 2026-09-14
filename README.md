@@ -38,7 +38,7 @@ de **Comprensión del Negocio (E0)**.
 
 | Nombre | Número de cuenta |
 |---|---|
-| Vega Navas Saúl | [pendiente] |
+| Vega Navas Saúl | 322088267 |
 | Cimmino Yáñez Nicholas Joseph | [pendiente] |
 | Benítez Pérez Kristian Leonel | 322011346 |
 | Herrera Cuamatla Jennifer Jade | [pendiente] |
