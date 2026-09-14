@@ -56,6 +56,10 @@ El proyecto sigue la metodología **CRISP-DM** y se entrega por fases.
 
 ## Equipo
 
-Vega Navas Saúl · Cimmino Yáñez Nicholas Joseph · Benítez Pérez Kristian Leonel · Herrera Cuamatla
-Jennifer Jade — Facultad de Ciencias, UNAM. Números de cuenta en el
+- Vega Navas Saúl 
+- Cimmino Yáñez Nicholas Joseph 
+- Benítez Pérez Kristian Leonel 
+- Herrera Cuamatla Jennifer Jade 
+
+> Facultad de Ciencias, UNAM. Números de cuenta en el
 [README](https://github.com/fk2731/data-mining#integrantes) del repositorio.
